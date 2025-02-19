@@ -29,8 +29,9 @@ namespace NotesApp_v0._1
 
         }
 
-        public void AddToListNames (string name)
+        public void AddToList (string name, string numberPhone)
         {
+            usuarios.Add(new DataNotes(name, numberPhone));
             listNames.Items.Add(name);
         }
 

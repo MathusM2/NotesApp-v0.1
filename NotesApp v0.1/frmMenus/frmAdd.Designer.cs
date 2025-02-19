@@ -39,14 +39,14 @@
             // 
             txtAdd_Name.Location = new Point(12, 29);
             txtAdd_Name.Name = "txtAdd_Name";
-            txtAdd_Name.Size = new Size(222, 27);
+            txtAdd_Name.Size = new Size(189, 27);
             txtAdd_Name.TabIndex = 0;
             // 
             // txtAdd_Number
             // 
             txtAdd_Number.Location = new Point(12, 82);
             txtAdd_Number.Name = "txtAdd_Number";
-            txtAdd_Number.Size = new Size(222, 27);
+            txtAdd_Number.Size = new Size(189, 27);
             txtAdd_Number.TabIndex = 1;
             // 
             // btnAdd_Confirm
@@ -81,7 +81,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(246, 168);
+            ClientSize = new Size(283, 168);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnAdd_Confirm);
