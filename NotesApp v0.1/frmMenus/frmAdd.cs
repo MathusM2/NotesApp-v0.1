@@ -14,7 +14,8 @@ namespace NotesApp_v0._1.frmMenus
     public partial class frmAdd : Form
     {
         private List<DataNotes> usuarios = new List<DataNotes>();
-        private frmPrincipal frmPrincipal;
+        
+        private frmPrincipal frmPrincipal; //recebe a referência do contexto de frmPrincipal
         public frmAdd(frmPrincipal principal)
         {
             InitializeComponent();
