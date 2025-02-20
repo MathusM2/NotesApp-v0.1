@@ -13,8 +13,8 @@ namespace NotesApp_v0._1.frmMenus
 {
     public partial class frmAdd : Form
     {
-        
-        private frmPrincipal frmPrincipal; //recebe a referência do contexto de frmPrincipal
+        //recebe a referência do contexto de frmPrincipal
+        private frmPrincipal frmPrincipal; 
         public frmAdd(frmPrincipal principal)
         {
             InitializeComponent();
@@ -28,8 +28,8 @@ namespace NotesApp_v0._1.frmMenus
 
             if(!string.IsNullOrEmpty(txtAdd_Name.Text) && !string.IsNullOrEmpty(txtAdd_Number.Text) )
             {
+                //Chama o metódo AddToList, repassando os dados, e returna DialogResult.ok, finalizando a janela
                 frmPrincipal.AddToList(name, phoneNumber);
-
                 DialogResult = DialogResult.OK;
                 
             }

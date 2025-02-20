@@ -1,14 +1,22 @@
 using NotesApp_v0._1.frmMenus;
+using System.ComponentModel;
 
 namespace NotesApp_v0._1
 {
     public partial class frmPrincipal : Form
     {
         //Adiciona uma lista de objetos contendo informações digitadas no frmAdd, como o nome e o número de telefone
-        private List<DataNotes> usuarios = new List<DataNotes>();
+        //Diferente do metódo List<> que resumindo apenas e uma lista dinâmica, que armazena diferentes tipos de dados, como objetos
+        //BindingList<> no caso também e uma lista dinâmica, mas ela conecta as informações na lista e atualiza as informações em interface
+        //De forma automatica, conectando listNames e usuarios
+        private BindingList<DataNotes> usuarios = new BindingList<DataNotes>();
         public frmPrincipal()
         {
             InitializeComponent();
+
+            listNames.DataSource = usuarios;
+            listNames.DisplayMember = "Name";
+            listNames.ValueMember = "NumberPhone";
         }
 
         private void button_Add_Click(object sender, EventArgs e)
@@ -29,10 +37,14 @@ namespace NotesApp_v0._1
 
         }
 
+        //Esse método e usado em frmAdd, e recebe as informações para adicionar um novo objeto do tipo DataNote na lista usuarios
+        //É para a adição de um novo item na listbox
         public void AddToList (string name, string numberPhone)
         {
-            usuarios.Add(new DataNotes(name, numberPhone));
-            listNames.Items.Add(name);
+            //Adição do objeto a lista usuários
+            DataNotes newDataNotes = new DataNotes(name, numberPhone);
+            
+            usuarios.Add(newDataNotes);
         }
 
 
