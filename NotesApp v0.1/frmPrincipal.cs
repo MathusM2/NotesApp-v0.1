@@ -49,6 +49,8 @@ namespace NotesApp_v0._1
         {
             //Adição do objeto a lista usuários
             DataNotes newDataNotes = new DataNotes(name, numberPhone);
+            newDataNotes.Name = name;
+            
             
             usuarios.Add(newDataNotes);
         }
