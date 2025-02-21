@@ -28,13 +28,19 @@ namespace NotesApp_v0._1
 
         private void button_Edit_Click(object sender, EventArgs e)
         {
-            var editWindow = new frmEdit();
-            editWindow.Show();
+            DataNotes DataNotesSelecionado = (DataNotes)listNames.SelectedItem;
+            var editWindow = new frmEdit(this, DataNotesSelecionado);
+            editWindow.ShowDialog();
         }
 
         private void button_Remove_Click(object sender, EventArgs e)
         {
+            if (listNames.SelectedItem != null)
+            {
+                DataNotes DataNoteSelecionado = (DataNotes)listNames.SelectedItem;
+                usuarios.Remove(DataNoteSelecionado);
 
+            }
         }
 
         //Esse método e usado em frmAdd, e recebe as informações para adicionar um novo objeto do tipo DataNote na lista usuarios

@@ -30,11 +30,11 @@
         {
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            button1 = new Button();
+            labelDataName = new Label();
+            labelDataNumber = new Label();
+            txtPhoneEdit = new TextBox();
+            txtNameEdit = new TextBox();
+            button_Confirm = new Button();
             SuspendLayout();
             // 
             // label1
@@ -55,57 +55,58 @@
             label2.TabIndex = 1;
             label2.Text = "N.Phone:";
             // 
-            // label3
+            // labelDataName
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(88, 9);
-            label3.Name = "label3";
-            label3.Size = new Size(18, 20);
-            label3.TabIndex = 2;
-            label3.Text = "...";
+            labelDataName.AutoSize = true;
+            labelDataName.Location = new Point(88, 9);
+            labelDataName.Name = "labelDataName";
+            labelDataName.Size = new Size(18, 20);
+            labelDataName.TabIndex = 2;
+            labelDataName.Text = "...";
             // 
-            // label4
+            // labelDataNumber
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(88, 40);
-            label4.Name = "label4";
-            label4.Size = new Size(18, 20);
-            label4.TabIndex = 3;
-            label4.Text = "...";
+            labelDataNumber.AutoSize = true;
+            labelDataNumber.Location = new Point(88, 40);
+            labelDataNumber.Name = "labelDataNumber";
+            labelDataNumber.Size = new Size(18, 20);
+            labelDataNumber.TabIndex = 3;
+            labelDataNumber.Text = "...";
             // 
-            // textBox1
+            // txtPhoneEdit
             // 
-            textBox1.Location = new Point(12, 158);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 4;
+            txtPhoneEdit.Location = new Point(12, 158);
+            txtPhoneEdit.Name = "txtPhoneEdit";
+            txtPhoneEdit.Size = new Size(125, 27);
+            txtPhoneEdit.TabIndex = 4;
             // 
-            // textBox2
+            // txtNameEdit
             // 
-            textBox2.Location = new Point(12, 107);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 5;
+            txtNameEdit.Location = new Point(12, 107);
+            txtNameEdit.Name = "txtNameEdit";
+            txtNameEdit.Size = new Size(125, 27);
+            txtNameEdit.TabIndex = 5;
             // 
-            // button1
+            // button_Confirm
             // 
-            button1.Location = new Point(12, 208);
-            button1.Name = "button1";
-            button1.Size = new Size(125, 29);
-            button1.TabIndex = 6;
-            button1.Text = "Confirm";
-            button1.UseVisualStyleBackColor = true;
+            button_Confirm.Location = new Point(12, 208);
+            button_Confirm.Name = "button_Confirm";
+            button_Confirm.Size = new Size(125, 29);
+            button_Confirm.TabIndex = 6;
+            button_Confirm.Text = "Confirm";
+            button_Confirm.UseVisualStyleBackColor = true;
+            button_Confirm.Click += button_Confirm_Click;
             // 
             // frmEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(315, 249);
-            Controls.Add(button1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(label4);
-            Controls.Add(label3);
+            Controls.Add(button_Confirm);
+            Controls.Add(txtNameEdit);
+            Controls.Add(txtPhoneEdit);
+            Controls.Add(labelDataNumber);
+            Controls.Add(labelDataName);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "frmEdit";
@@ -118,10 +119,10 @@
 
         private Label label1;
         private Label label2;
-        private Label label3;
-        private Label label4;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Button button1;
+        private Label labelDataName;
+        private Label labelDataNumber;
+        private TextBox txtPhoneEdit;
+        private TextBox txtNameEdit;
+        private Button button_Confirm;
     }
 }
