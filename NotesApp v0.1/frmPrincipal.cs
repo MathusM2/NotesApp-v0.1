@@ -28,9 +28,16 @@ namespace NotesApp_v0._1
 
         private void button_Edit_Click(object sender, EventArgs e)
         {
-            DataNotes DataNotesSelecionado = (DataNotes)listNames.SelectedItem;
-            var editWindow = new frmEdit(this, DataNotesSelecionado);
-            editWindow.ShowDialog();
+            if (listNames.SelectedItem != null) 
+            {
+                DataNotes DataNotesSelecionado = (DataNotes)listNames.SelectedItem;
+                var editWindow = new frmEdit(this, DataNotesSelecionado);
+                editWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Select an item");
+            }
         }
 
         private void button_Remove_Click(object sender, EventArgs e)
@@ -39,7 +46,10 @@ namespace NotesApp_v0._1
             {
                 DataNotes DataNoteSelecionado = (DataNotes)listNames.SelectedItem;
                 usuarios.Remove(DataNoteSelecionado);
-
+            }
+            else
+            {
+                MessageBox.Show("Select an item to remove");
             }
         }
 

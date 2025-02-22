@@ -15,12 +15,12 @@ namespace NotesApp_v0._1
         Ao adiciona-la dentro da estrutura do Objeto DataNotes, isso garante que todo o objeto do tipo DataNotes possua a função de notificar
         Seus ouvintes ou dependentes de forma automatica, caso haja uma alteração nas suas propriedades*/
         private string DataName;
-        public string NumberPhone { get; set; }
+        private string DataNumberPhone;
 
         public DataNotes(string name, string numberPhone)
         {
             DataName = name;
-            NumberPhone = numberPhone;
+            DataNumberPhone = numberPhone;
         }
 
         //Este método e responsavel de adicionar as funcionalidades de getting e setter, e tornar publico o acesso destas propriedades
@@ -37,6 +37,19 @@ namespace NotesApp_v0._1
                 }
             }
         }
+
+        public string NumberPhone
+        {
+            get { return DataNumberPhone;  }
+            set
+            {
+                if (DataNumberPhone != value)
+                {
+                    DataNumberPhone = value;
+                }
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;//Aqui esta sendo declarado o nome do evento responsável por delegar aos ouvintes a notificação de uma alteração na propriedade
         protected virtual void NotifyPropertyChanged(string proportyName)//Esse e o método responsável por enviar para os ouvintes qual foi a alteração, usando o nome da propriedade recebida

@@ -35,6 +35,8 @@
             txtPhoneEdit = new TextBox();
             txtNameEdit = new TextBox();
             button_Confirm = new Button();
+            checkBox1 = new CheckBox();
+            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -75,10 +77,12 @@
             // 
             // txtPhoneEdit
             // 
-            txtPhoneEdit.Location = new Point(12, 158);
+            txtPhoneEdit.Location = new Point(12, 155);
             txtPhoneEdit.Name = "txtPhoneEdit";
             txtPhoneEdit.Size = new Size(125, 27);
             txtPhoneEdit.TabIndex = 4;
+            txtPhoneEdit.Enter += txtPhoneEdit_Enter;
+            txtPhoneEdit.Leave += txtPhoneEdit_Leave;
             // 
             // txtNameEdit
             // 
@@ -86,6 +90,8 @@
             txtNameEdit.Name = "txtNameEdit";
             txtNameEdit.Size = new Size(125, 27);
             txtNameEdit.TabIndex = 5;
+            txtNameEdit.Enter += txtNameEdit_Enter;
+            txtNameEdit.Leave += txtNameEdit_Leave;
             // 
             // button_Confirm
             // 
@@ -97,11 +103,30 @@
             button_Confirm.UseVisualStyleBackColor = true;
             button_Confirm.Click += button_Confirm_Click;
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(12, 77);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(83, 24);
+            checkBox1.TabIndex = 7;
+            checkBox1.Text = "Favorite";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(153, 107);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(54, 27);
+            textBox1.TabIndex = 8;
+            // 
             // frmEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(315, 249);
+            Controls.Add(textBox1);
+            Controls.Add(checkBox1);
             Controls.Add(button_Confirm);
             Controls.Add(txtNameEdit);
             Controls.Add(txtPhoneEdit);
@@ -124,5 +149,7 @@
         private TextBox txtPhoneEdit;
         private TextBox txtNameEdit;
         private Button button_Confirm;
+        private CheckBox checkBox1;
+        private TextBox textBox1;
     }
 }
