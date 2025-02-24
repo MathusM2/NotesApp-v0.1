@@ -27,13 +27,17 @@ namespace NotesApp_v0._1
         //por meio do controle get e set, a códigos externos
         public string Name 
         {
+            
             get { return DataName; }
             set 
             {
+                
+
                 if (DataName != value)//Verificação se o valor recebido de um código externo para alteração, NÃO e igual ao DataName(Valor Atual da propriedade Name do objeto DataNotes)
                 {
                     DataName = value;//DataName recebe o valor do código externo para alteração
                     NotifyPropertyChanged(nameof(Name));//Chama o método NotifyPropertyChanged e passa o Nome da propriedade alterada
+                    
                 }
             }
         }
