@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NotesApp_v0._1.resc;
 
 namespace NotesApp_v0._1.frmMenus
 {
@@ -41,19 +42,29 @@ namespace NotesApp_v0._1.frmMenus
 
             if (!string.IsNullOrEmpty(txtNameEdit.Text) && !string.IsNullOrEmpty(txtPhoneEdit.Text))
             {
-                dataNoteSelecionado.Name = Name;
-                dataNoteSelecionado.NumberPhone = NumberPhone;
-                DialogResult = DialogResult.OK;
+                if (FormValidation.CheckNameField(Name))
+                {
+                    if (FormValidation.CheckNumberField(NumberPhone))
+                    {
+                        dataNoteSelecionado.Name = Name;
+                        dataNoteSelecionado.NumberPhone = NumberPhone;
+                        DialogResult = DialogResult.OK;
+                        MessageBox.Show("Contact edited successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("the phone number need a 8 digits, and cannot contain letters!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The name field cannot contain numbers or greater than 30 characters!");
+                }
             }
             else
             {
                 MessageBox.Show("Try again or fill in the fields");
             }
-        }
-
-        private void txtNameEdit_Enter(object sender, EventArgs e)
-        {
-            txtNameEdit.Text = "";
         }
 
         private void txtNameEdit_Leave(object sender, EventArgs e)
@@ -64,11 +75,6 @@ namespace NotesApp_v0._1.frmMenus
             }
         }
 
-        private void txtPhoneEdit_Enter(object sender, EventArgs e)
-        {
-            txtPhoneEdit.Text = "";
-        }
-
         private void txtPhoneEdit_Leave(object sender, EventArgs e)
         {
             if (txtPhoneEdit.Text == "")
@@ -77,7 +83,7 @@ namespace NotesApp_v0._1.frmMenus
             }
         }
 
-        
+
     }
 }
        

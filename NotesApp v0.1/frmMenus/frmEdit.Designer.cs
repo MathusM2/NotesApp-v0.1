@@ -81,7 +81,6 @@
             txtPhoneEdit.Name = "txtPhoneEdit";
             txtPhoneEdit.Size = new Size(125, 27);
             txtPhoneEdit.TabIndex = 4;
-            txtPhoneEdit.Enter += txtPhoneEdit_Enter;
             txtPhoneEdit.Leave += txtPhoneEdit_Leave;
             // 
             // txtNameEdit
@@ -90,7 +89,6 @@
             txtNameEdit.Name = "txtNameEdit";
             txtNameEdit.Size = new Size(125, 27);
             txtNameEdit.TabIndex = 5;
-            txtNameEdit.Enter += txtNameEdit_Enter;
             txtNameEdit.Leave += txtNameEdit_Leave;
             // 
             // button_Confirm

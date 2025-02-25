@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NotesApp_v0._1.resc;
 
 
 namespace NotesApp_v0._1.frmMenus
@@ -28,9 +29,9 @@ namespace NotesApp_v0._1.frmMenus
 
             if (!string.IsNullOrEmpty(txtAdd_Name.Text) && !string.IsNullOrEmpty(txtAdd_Number.Text))
             {
-                if (CheckNameField(name))
+                if (FormValidation.CheckNameField(name))
                 {
-                    if (CheckNumberField(phoneNumber))
+                    if (FormValidation.CheckNumberField(phoneNumber))
                     {
                         ConfirmConcluided(name, phoneNumber);
                         MessageBox.Show("The contact is registered!");
@@ -52,53 +53,13 @@ namespace NotesApp_v0._1.frmMenus
             }
         }
 
+        
+        //Após passar em todos os "checks", e chamado o método AddToList
         private void ConfirmConcluided(string name, string phoneNumber)
         {
             //Chama o metódo AddToList, repassando os dados, e returna DialogResult.ok, finalizando a janela
             frmPrincipal.AddToList(name, phoneNumber);
             DialogResult = DialogResult.OK;
-        }
-
-        private static bool CheckNameField(string name)
-        {
-            if (ContainsNumbers(name) || name.Length >30)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        private static bool CheckNumberField(string phoneNumber)
-        {
-            if(!ContainsOnlyNumbers(phoneNumber) || phoneNumber.Length != 8) 
-            {
-                return false;
-            }
-            return true;
-        }
-
-        private static bool ContainsNumbers(string input)
-        {
-            foreach (char c in input)
-            {
-                if (char.IsDigit(c))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private static bool ContainsOnlyNumbers(string input)
-        {
-            foreach (char c in input)
-            {
-                if (!char.IsDigit(c))
-                {
-                    return false;
-                }
-            }
-            return true;
         }
 
     }
