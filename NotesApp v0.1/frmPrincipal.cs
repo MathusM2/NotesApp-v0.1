@@ -1,5 +1,6 @@
 using NotesApp_v0._1.frmMenus;
 using System.ComponentModel;
+using NotesApp_v0._1.resc;
 
 namespace NotesApp_v0._1
 {
@@ -10,11 +11,17 @@ namespace NotesApp_v0._1
         //BindingList<> no caso também e uma lista dinâmica, mas ela conecta as informações na lista e atualiza as informações em interface
         //De forma automatica, conectando listNames e usuarios
         private BindingList<DataNotes> usuarios = new BindingList<DataNotes>();
+        //BindingSource e o intermediário entre a fonte de dados(BindingList usuarios) e a interface visual, como o listbox
+        //Ele possui DataSource proprio, assim armazena informações em si, e permite alterar itens no listbox, sem alterar a fonte de dados
+        //Ele atualiza as informações visuais de acordo com a fonte de dados
+        private BindingSource bindingSource = new BindingSource();
         public frmPrincipal()
         {
             InitializeComponent();
 
-            listNames.DataSource = usuarios;
+
+            bindingSource.DataSource = usuarios;//No caso agora, bindingSource recebe suas informações de usuarios
+            listNames.DataSource = bindingSource;//E repassa essas informações para a listbox
             listNames.DisplayMember = "Name";
             listNames.ValueMember = "NumberPhone";
         }
@@ -28,7 +35,7 @@ namespace NotesApp_v0._1
 
         private void button_Edit_Click(object sender, EventArgs e)
         {
-            if (listNames.SelectedItem != null) 
+            if (listNames.SelectedItem != null)
             {
                 DataNotes DataNotesSelecionado = (DataNotes)listNames.SelectedItem;
                 var editWindow = new frmEdit(this, DataNotesSelecionado);
@@ -60,11 +67,48 @@ namespace NotesApp_v0._1
             //Adição do objeto a lista usuários
             DataNotes newDataNotes = new DataNotes(name, numberPhone);
             newDataNotes.Name = name;
-            
-            
+
+
             usuarios.Add(newDataNotes);
         }
 
+        //Responsável por esconder o icone de filtro, e exibir a combobox de filtro
+        private void icon_filter_Click(object sender, EventArgs e)
+        {
+            if (filter_box.Visible == false)
+            {
+                icon_filter.Visible = false;
+                filter_box.Visible = true;
+                filter_box.Focus();
+            }
+        }
 
+        //Responsável por esconder a combobox e exibir o icone de filtro
+        private void filter_box_Leave(object sender, EventArgs e)
+        {
+            filter_box.Visible = false;
+            icon_filter.Visible = true;
+
+        }
+
+        //Responsável por realizar a busca de itens pelo que esta escrito na caixa de texto ao clicar no icone de busca
+        private void icon_Search_Click(object sender, EventArgs e)
+        {
+                var txtSearch = txt_Search.Text;
+                ListFilter.Filter(usuarios, bindingSource, txtSearch);//Chama o método de busca, enviando a referência de usuarios e da bindingSource
+        }
+
+        private void txt_Search_Enter(object sender, EventArgs e)
+        {
+            txt_Search.Text = "";
+        }
+
+        private void txt_Search_Leave(object sender, EventArgs e)
+        {
+            if(txt_Search.Text == "")
+            {
+                txt_Search.Text = "Pesquisar";
+            }
+        }
     }
 }
