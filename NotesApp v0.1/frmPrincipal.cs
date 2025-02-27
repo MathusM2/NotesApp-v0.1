@@ -33,6 +33,19 @@ namespace NotesApp_v0._1
             addWindow.ShowDialog();
         }
 
+        //Recebe os dados de usuario frmAdd, coleta a lista usuarios, e chama a classe utilitária ManagerUsuarios
+        public void AddUsuario(DataNotes usuario)
+         {
+            try
+            {
+                ManagerUsuarios.Add(usuarios, usuario);
+            }
+            catch(Exception ex)
+            {
+                    MessageBox.Show(ex.Message);
+            }
+         }
+
         private void button_Edit_Click(object sender, EventArgs e)
         {
             if (listNames.SelectedItem != null)
@@ -51,25 +64,13 @@ namespace NotesApp_v0._1
         {
             if (listNames.SelectedItem != null)
             {
-                DataNotes DataNoteSelecionado = (DataNotes)listNames.SelectedItem;
-                usuarios.Remove(DataNoteSelecionado);
+                DataNotes DataNoteSelected = (DataNotes)listNames.SelectedItem;
+                usuarios.Remove(DataNoteSelected);
             }
             else
             {
                 MessageBox.Show("Select an item to remove");
             }
-        }
-
-        //Esse método e usado em frmAdd, e recebe as informações para adicionar um novo objeto do tipo DataNote na lista usuarios
-        //É para a adição de um novo item na listbox
-        public void AddToList (string name, string numberPhone)
-        {
-            //Adição do objeto a lista usuários
-            DataNotes newDataNotes = new DataNotes(name, numberPhone);
-            newDataNotes.Name = name;
-
-
-            usuarios.Add(newDataNotes);
         }
 
         //Responsável por esconder o icone de filtro, e exibir a combobox de filtro

@@ -15,7 +15,7 @@ namespace NotesApp_v0._1.frmMenus
     public partial class frmAdd : Form
     {
         //recebe a referência do contexto de frmPrincipal
-        private frmPrincipal frmPrincipal; 
+        private frmPrincipal frmPrincipal;
         public frmAdd(frmPrincipal principal)
         {
             InitializeComponent();
@@ -57,8 +57,9 @@ namespace NotesApp_v0._1.frmMenus
         //Após passar em todos os "checks", e chamado o método AddToList
         private void ConfirmConcluided(string name, string phoneNumber)
         {
-            //Chama o metódo AddToList, repassando os dados, e returna DialogResult.ok, finalizando a janela
-            frmPrincipal.AddToList(name, phoneNumber);
+            DataNotes newUser = new DataNotes(name, phoneNumber);
+            //Chama o metódo AddUsuario, repassando os dados, e returna DialogResult.ok, finalizando a janela
+            frmPrincipal.AddUsuario(newUser);
             DialogResult = DialogResult.OK;
         }
 
