@@ -14,6 +14,7 @@ namespace NotesApp_v0._1.frmMenus
 {
     public partial class frmEdit : Form
     {
+        //recebe a referência de frmPrincipal e do item selecionado na lista(listBox)
         private frmPrincipal frmPrincipal;
         private DataNotes dataNoteSelecionado;
         public frmEdit(frmPrincipal principal, DataNotes dataNote)
@@ -22,6 +23,7 @@ namespace NotesApp_v0._1.frmMenus
             frmPrincipal = principal;
             dataNoteSelecionado = dataNote;
 
+            //Envia dos dados a serem preenchidos nos labels e campos de texto
             labelDataName.Text = dataNoteSelecionado.Name;
             labelDataNumber.Text = dataNoteSelecionado.NumberPhone;
 
@@ -30,11 +32,7 @@ namespace NotesApp_v0._1.frmMenus
 
             this.Shown += new EventHandler(Form1_Shown);//O tipo de evento Shown, ordena que o programa adicione o foco a determinado componente, após o programa ser renderizado
         }                                               //Diferente de Load, que carregaria a ordem antes do programa ser renderizado
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-            // Remover o foco do TextBox
-            this.button_Confirm.Focus();
-        }
+       
 
         private void button_Confirm_Click(object sender, EventArgs e)
         {
@@ -43,29 +41,43 @@ namespace NotesApp_v0._1.frmMenus
 
             if (!string.IsNullOrEmpty(txtNameEdit.Text) && !string.IsNullOrEmpty(txtPhoneEdit.Text))
             {
-                if (FormValidation.CheckNameField(Name))
+                try
                 {
-                    if (FormValidation.CheckNumberField(NumberPhone))
+                    if (FormValidation.CheckNameField(Name))
                     {
-                        dataNoteSelecionado.Name = Name;
-                        dataNoteSelecionado.NumberPhone = NumberPhone;
-                        DialogResult = DialogResult.OK;
-                        MessageBox.Show("Contact edited successfully!");
+                        if (FormValidation.CheckNumberField(NumberPhone))
+                        {
+                            DataNotes editedUsuario = new DataNotes(Name, NumberPhone);
+
+                            ConfirmConcluided(editedUsuario, dataNoteSelecionado);
+
+                            DialogResult = DialogResult.OK;
+                            MessageBox.Show("Contact edited successfully!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("the phone number need a 8 digits, and cannot contain letters!");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("the phone number need a 8 digits, and cannot contain letters!");
+                        MessageBox.Show("The name field cannot contain numbers or greater than 30 characters!");
                     }
                 }
-                else
+                catch(Exception ex)
                 {
-                    MessageBox.Show("The name field cannot contain numbers or greater than 30 characters!");
+                    MessageBox.Show("Houve um erro no sistema, ao processar os dados","Erro:" + ex, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
                 MessageBox.Show("Try again or fill in the fields");
             }
+        }
+
+        public void ConfirmConcluided(DataNotes editedUsuario,DataNotes dataNoteSelecionado)
+        {
+            frmPrincipal.EditUsuario(editedUsuario, dataNoteSelecionado);
         }
 
         private void txtNameEdit_Leave(object sender, EventArgs e)
@@ -82,6 +94,11 @@ namespace NotesApp_v0._1.frmMenus
             {
                 txtPhoneEdit.Text = dataNoteSelecionado.NumberPhone;
             }
+        }
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            // Remover o foco do TextBox
+            this.button_Confirm.Focus();
         }
 
 

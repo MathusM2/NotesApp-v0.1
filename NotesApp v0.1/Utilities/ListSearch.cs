@@ -8,9 +8,9 @@ using NotesApp_v0._1.Models;
 
 namespace NotesApp_v0._1.Utilities
 {
-    public static class ListFilter
+    public static class ListSearch
     {
-        public static void Filter(BindingList<DataNotes> usuarios, BindingSource bindingSource, string txtSearch)
+        public static void Search(BindingList<DataNotes> usuarios, BindingSource bindingSource, string txtSearch)
         {
             string Search = txtSearch.ToLower();//Torna o texto para busca minúsculo
 

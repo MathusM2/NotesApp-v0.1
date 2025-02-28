@@ -27,30 +27,51 @@ namespace NotesApp_v0._1
             listNames.ValueMember = "NumberPhone";
         }
 
-        private void button_Add_Click(object sender, EventArgs e)
-        {
-            //Abre um window, do tipo frmAdd, e nele coloco a referência do contexto do frmPrincipal
-            var addWindow = new frmAdd(this);
-            addWindow.ShowDialog();
-        }
+        //Delegators
 
-        //Recebe os dados de usuario frmAdd, coleta a lista usuarios, e chama a classe utilitária ManagerUsuarios
-        public void AddUsuario(DataNotes usuario)
-         {
+        //Recebe os dados de usuario frmAdd e frmEdit, e chama a classe utilitária ManagerUsuarios
+        public void AddUsuario(DataNotes newUsuario)
+        {
             try
             {
-                ManagerUsuarios.Add(usuarios, usuario);
+                ManagerUsuarios.Add(usuarios, newUsuario);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void EditUsuario(DataNotes editedUsuario,DataNotes dataNoteSelecionado)
+        {
+            try
+            {
+                ManagerUsuarios.Edit(usuarios, editedUsuario, dataNoteSelecionado);
             }
             catch(Exception ex)
             {
-                    MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
-         }
+        }
+
+
+
+
+        //UI (User Interface)
+
+        //Button Actions
+        private void button_Add_Click(object sender, EventArgs e)
+        {
+            //Abre o Form frmAdd
+            var addWindow = new frmAdd(this);
+            addWindow.ShowDialog();
+        }
 
         private void button_Edit_Click(object sender, EventArgs e)
         {
             if (listNames.SelectedItem != null)
             {
+                //Abre o Form frmEdit
                 DataNotes DataNotesSelecionado = (DataNotes)listNames.SelectedItem;
                 var editWindow = new frmEdit(this, DataNotesSelecionado);
                 editWindow.ShowDialog();
@@ -60,21 +81,22 @@ namespace NotesApp_v0._1
                 MessageBox.Show("Select an item");
             }
         }
-
         private void button_Remove_Click(object sender, EventArgs e)
         {
             if (listNames.SelectedItem != null)
             {
-                DataNotes DataNoteSelected = (DataNotes)listNames.SelectedItem;
-                usuarios.Remove(DataNoteSelected);
+                DataNotes DataNotesSelecionado = (DataNotes)listNames.SelectedItem;
+                ManagerUsuarios.Remove(usuarios, DataNotesSelecionado);
             }
             else
             {
                 MessageBox.Show("Select an item to remove");
             }
         }
+        //Filter
 
         //Responsável por esconder o icone de filtro, e exibir a combobox de filtro
+
         private void icon_filter_Click(object sender, EventArgs e)
         {
             if (filter_box.Visible == false)
@@ -84,7 +106,6 @@ namespace NotesApp_v0._1
                 filter_box.Focus();
             }
         }
-
         //Responsável por esconder a combobox e exibir o icone de filtro
         private void filter_box_Leave(object sender, EventArgs e)
         {
@@ -93,13 +114,14 @@ namespace NotesApp_v0._1
 
         }
 
+        //Search
+
         //Responsável por realizar a busca de itens pelo que esta escrito na caixa de texto ao clicar no icone de busca
         private void icon_Search_Click(object sender, EventArgs e)
         {
-                var txtSearch = txt_Search.Text;
-                ListFilter.Filter(usuarios, bindingSource, txtSearch);//Chama o método de busca, enviando a referência de usuarios e da bindingSource
+            var txtSearch = txt_Search.Text;
+            ListSearch.Search(usuarios, bindingSource, txtSearch);//Chama o método de busca, enviando a referência de usuarios e da bindingSource
         }
-
         private void txt_Search_Enter(object sender, EventArgs e)
         {
             txt_Search.Text = "";
@@ -107,7 +129,7 @@ namespace NotesApp_v0._1
 
         private void txt_Search_Leave(object sender, EventArgs e)
         {
-            if(txt_Search.Text == "")
+            if (txt_Search.Text == "")
             {
                 txt_Search.Text = "Pesquisar";
             }
