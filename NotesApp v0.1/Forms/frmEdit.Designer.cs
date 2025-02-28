@@ -36,7 +36,6 @@
             txtNameEdit = new TextBox();
             button_Confirm = new Button();
             checkBox1 = new CheckBox();
-            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -111,19 +110,11 @@
             checkBox1.Text = "Favorite";
             checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(153, 107);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(54, 27);
-            textBox1.TabIndex = 8;
-            // 
             // frmEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(315, 249);
-            Controls.Add(textBox1);
             Controls.Add(checkBox1);
             Controls.Add(button_Confirm);
             Controls.Add(txtNameEdit);
@@ -148,6 +139,5 @@
         private TextBox txtNameEdit;
         private Button button_Confirm;
         private CheckBox checkBox1;
-        private TextBox textBox1;
     }
 }

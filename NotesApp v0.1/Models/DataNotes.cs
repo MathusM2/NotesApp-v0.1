@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NotesApp_v0._1
+namespace NotesApp_v0._1.Models
 {
     public class DataNotes : INotifyPropertyChanged
     {
@@ -25,26 +25,26 @@ namespace NotesApp_v0._1
 
         //Este método e responsavel de adicionar as funcionalidades de getting e setter, e tornar publico o acesso destas propriedades
         //por meio do controle get e set, a códigos externos
-        public string Name 
+        public string Name
         {
-            
+
             get { return DataName; }
-            set 
+            set
             {
-                
+
 
                 if (DataName != value)//Verificação se o valor recebido de um código externo para alteração, NÃO e igual ao DataName(Valor Atual da propriedade Name do objeto DataNotes)
                 {
                     DataName = value;//DataName recebe o valor do código externo para alteração
                     NotifyPropertyChanged(nameof(Name));//Chama o método NotifyPropertyChanged e passa o Nome da propriedade alterada
-                    
+
                 }
             }
         }
 
         public string NumberPhone
         {
-            get { return DataNumberPhone;  }
+            get { return DataNumberPhone; }
             set
             {
                 if (DataNumberPhone != value)
@@ -64,6 +64,6 @@ namespace NotesApp_v0._1
             }
         }
 
-        
+
     }
 }

@@ -4,8 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NotesApp_v0._1.Models;
 
-namespace NotesApp_v0._1.resc
+namespace NotesApp_v0._1.Utilities
 {
     public class ManagerUsuarios
     {
@@ -24,12 +25,12 @@ namespace NotesApp_v0._1.resc
                 }
                 usuarios.Add(usuario);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new ApplicationException("Ocorrou um erro inesperado:" + ex);
             }
         }
 
- 
+
     }
 }

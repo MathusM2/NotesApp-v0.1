@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NotesApp_v0._1.resc;
+using NotesApp_v0._1.Models;
+using NotesApp_v0._1.Utilities;
 
 namespace NotesApp_v0._1.frmMenus
 {

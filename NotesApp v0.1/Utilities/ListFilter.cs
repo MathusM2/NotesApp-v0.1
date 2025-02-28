@@ -4,8 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NotesApp_v0._1.Models;
 
-namespace NotesApp_v0._1.resc
+namespace NotesApp_v0._1.Utilities
 {
     public static class ListFilter
     {
@@ -14,7 +15,7 @@ namespace NotesApp_v0._1.resc
             string Search = txtSearch.ToLower();//Torna o texto para busca minúsculo
 
             if (Search == "")//Caso nada seja digitado, a listbox e a bindingSource serão resetados
-            {          
+            {
                 bindingSource.DataSource = usuarios;
             }
             else
@@ -27,6 +28,6 @@ namespace NotesApp_v0._1.resc
         }
 
 
-        }
-        
     }
+
+}

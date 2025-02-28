@@ -1,6 +1,7 @@
 using NotesApp_v0._1.frmMenus;
 using System.ComponentModel;
-using NotesApp_v0._1.resc;
+using NotesApp_v0._1.Models;
+using NotesApp_v0._1.Utilities;
 
 namespace NotesApp_v0._1
 {
