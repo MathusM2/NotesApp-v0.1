@@ -34,12 +34,23 @@
             button_Add = new Button();
             button_Edit = new Button();
             button_Remove = new Button();
-            filter_box = new ComboBox();
             txt_Search = new TextBox();
             icon_Search = new PictureBox();
             icon_filter = new PictureBox();
+            panelFilter = new Panel();
+            panelFilter_CloseButton = new PictureBox();
+            comboBox1 = new ComboBox();
+            panelFilter_txtAge = new TextBox();
+            panelFilter_labelAge = new Label();
+            panelFilter_labelRelationship = new Label();
+            checkBox_FilterHaveNumber = new CheckBox();
+            checkBox_FilterFavorite = new CheckBox();
+            panelFilter_labelTitle = new Label();
+            buttonConfirm_Filter = new Button();
             ((System.ComponentModel.ISupportInitialize)icon_Search).BeginInit();
             ((System.ComponentModel.ISupportInitialize)icon_filter).BeginInit();
+            panelFilter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)panelFilter_CloseButton).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -47,21 +58,21 @@
             label1.AutoSize = true;
             label1.Location = new Point(12, 24);
             label1.Name = "label1";
-            label1.Size = new Size(76, 20);
+            label1.Size = new Size(94, 20);
             label1.TabIndex = 0;
-            label1.Text = "You Notes";
+            label1.Text = "You Contacts";
             // 
             // listNames
             // 
             listNames.FormattingEnabled = true;
-            listNames.Location = new Point(12, 92);
+            listNames.Location = new Point(12, 153);
             listNames.Name = "listNames";
-            listNames.Size = new Size(156, 164);
+            listNames.Size = new Size(156, 304);
             listNames.TabIndex = 1;
             // 
             // button_Add
             // 
-            button_Add.Location = new Point(350, 132);
+            button_Add.Location = new Point(220, 153);
             button_Add.Name = "button_Add";
             button_Add.Size = new Size(94, 29);
             button_Add.TabIndex = 2;
@@ -71,7 +82,7 @@
             // 
             // button_Edit
             // 
-            button_Edit.Location = new Point(350, 181);
+            button_Edit.Location = new Point(220, 188);
             button_Edit.Name = "button_Edit";
             button_Edit.Size = new Size(94, 29);
             button_Edit.TabIndex = 3;
@@ -81,7 +92,7 @@
             // 
             // button_Remove
             // 
-            button_Remove.Location = new Point(350, 227);
+            button_Remove.Location = new Point(220, 224);
             button_Remove.Name = "button_Remove";
             button_Remove.Size = new Size(94, 29);
             button_Remove.TabIndex = 4;
@@ -89,20 +100,9 @@
             button_Remove.UseVisualStyleBackColor = true;
             button_Remove.Click += button_Remove_Click;
             // 
-            // filter_box
-            // 
-            filter_box.FormattingEnabled = true;
-            filter_box.Items.AddRange(new object[] { "Mais Recente", "Mais Antiga", "Ordem Alfabética (A-Z)", "Ordem Alfabética (Z-A)" });
-            filter_box.Location = new Point(174, 58);
-            filter_box.Name = "filter_box";
-            filter_box.Size = new Size(87, 28);
-            filter_box.TabIndex = 5;
-            filter_box.Visible = false;
-            filter_box.Leave += filter_box_Leave;
-            // 
             // txt_Search
             // 
-            txt_Search.Location = new Point(43, 59);
+            txt_Search.Location = new Point(43, 120);
             txt_Search.Name = "txt_Search";
             txt_Search.Size = new Size(125, 27);
             txt_Search.TabIndex = 7;
@@ -113,7 +113,7 @@
             // icon_Search
             // 
             icon_Search.Image = (Image)resources.GetObject("icon_Search.Image");
-            icon_Search.Location = new Point(12, 59);
+            icon_Search.Location = new Point(12, 120);
             icon_Search.Name = "icon_Search";
             icon_Search.Size = new Size(25, 27);
             icon_Search.SizeMode = PictureBoxSizeMode.Zoom;
@@ -124,7 +124,7 @@
             // icon_filter
             // 
             icon_filter.Image = (Image)resources.GetObject("icon_filter.Image");
-            icon_filter.Location = new Point(174, 59);
+            icon_filter.Location = new Point(174, 120);
             icon_filter.Name = "icon_filter";
             icon_filter.Size = new Size(25, 27);
             icon_filter.SizeMode = PictureBoxSizeMode.Zoom;
@@ -132,24 +132,130 @@
             icon_filter.TabStop = false;
             icon_filter.Click += icon_filter_Click;
             // 
+            // panelFilter
+            // 
+            panelFilter.BackColor = SystemColors.Window;
+            panelFilter.Controls.Add(panelFilter_CloseButton);
+            panelFilter.Controls.Add(comboBox1);
+            panelFilter.Controls.Add(panelFilter_txtAge);
+            panelFilter.Controls.Add(panelFilter_labelAge);
+            panelFilter.Controls.Add(panelFilter_labelRelationship);
+            panelFilter.Controls.Add(checkBox_FilterHaveNumber);
+            panelFilter.Controls.Add(checkBox_FilterFavorite);
+            panelFilter.Controls.Add(panelFilter_labelTitle);
+            panelFilter.Controls.Add(buttonConfirm_Filter);
+            panelFilter.Location = new Point(12, 55);
+            panelFilter.Name = "panelFilter";
+            panelFilter.Size = new Size(202, 402);
+            panelFilter.TabIndex = 10;
+            panelFilter.Paint += panel1_Paint;
+            // 
+            // panelFilter_CloseButton
+            // 
+            panelFilter_CloseButton.Image = (Image)resources.GetObject("panelFilter_CloseButton.Image");
+            panelFilter_CloseButton.Location = new Point(174, 0);
+            panelFilter_CloseButton.Name = "panelFilter_CloseButton";
+            panelFilter_CloseButton.Size = new Size(26, 41);
+            panelFilter_CloseButton.SizeMode = PictureBoxSizeMode.Zoom;
+            panelFilter_CloseButton.TabIndex = 17;
+            panelFilter_CloseButton.TabStop = false;
+            panelFilter_CloseButton.Click += panelFilter_CloseButton_Click;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
+            comboBox1.Location = new Point(10, 133);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 28);
+            comboBox1.TabIndex = 16;
+            // 
+            // panelFilter_txtAge
+            // 
+            panelFilter_txtAge.Location = new Point(10, 80);
+            panelFilter_txtAge.Name = "panelFilter_txtAge";
+            panelFilter_txtAge.Size = new Size(111, 27);
+            panelFilter_txtAge.TabIndex = 15;
+            // 
+            // panelFilter_labelAge
+            // 
+            panelFilter_labelAge.AutoSize = true;
+            panelFilter_labelAge.Location = new Point(10, 57);
+            panelFilter_labelAge.Name = "panelFilter_labelAge";
+            panelFilter_labelAge.Size = new Size(36, 20);
+            panelFilter_labelAge.TabIndex = 13;
+            panelFilter_labelAge.Text = "Age";
+            // 
+            // panelFilter_labelRelationship
+            // 
+            panelFilter_labelRelationship.AutoSize = true;
+            panelFilter_labelRelationship.Location = new Point(10, 110);
+            panelFilter_labelRelationship.Name = "panelFilter_labelRelationship";
+            panelFilter_labelRelationship.Size = new Size(91, 20);
+            panelFilter_labelRelationship.TabIndex = 12;
+            panelFilter_labelRelationship.Text = "Relationship";
+            // 
+            // checkBox_FilterHaveNumber
+            // 
+            checkBox_FilterHaveNumber.AutoSize = true;
+            checkBox_FilterHaveNumber.Location = new Point(10, 199);
+            checkBox_FilterHaveNumber.Name = "checkBox_FilterHaveNumber";
+            checkBox_FilterHaveNumber.Size = new Size(178, 24);
+            checkBox_FilterHaveNumber.TabIndex = 11;
+            checkBox_FilterHaveNumber.Text = "Have a number phone";
+            checkBox_FilterHaveNumber.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_FilterFavorite
+            // 
+            checkBox_FilterFavorite.AutoSize = true;
+            checkBox_FilterFavorite.Location = new Point(10, 169);
+            checkBox_FilterFavorite.Name = "checkBox_FilterFavorite";
+            checkBox_FilterFavorite.Size = new Size(89, 24);
+            checkBox_FilterFavorite.TabIndex = 3;
+            checkBox_FilterFavorite.Text = "Favorites";
+            checkBox_FilterFavorite.UseVisualStyleBackColor = true;
+            // 
+            // panelFilter_labelTitle
+            // 
+            panelFilter_labelTitle.AutoSize = true;
+            panelFilter_labelTitle.Font = new Font("Segoe UI", 18F);
+            panelFilter_labelTitle.Location = new Point(48, 0);
+            panelFilter_labelTitle.Name = "panelFilter_labelTitle";
+            panelFilter_labelTitle.Size = new Size(83, 41);
+            panelFilter_labelTitle.TabIndex = 1;
+            panelFilter_labelTitle.Text = "Filter";
+            // 
+            // buttonConfirm_Filter
+            // 
+            buttonConfirm_Filter.Location = new Point(48, 356);
+            buttonConfirm_Filter.Name = "buttonConfirm_Filter";
+            buttonConfirm_Filter.Size = new Size(94, 29);
+            buttonConfirm_Filter.TabIndex = 0;
+            buttonConfirm_Filter.Text = "Confirm";
+            buttonConfirm_Filter.TextImageRelation = TextImageRelation.ImageAboveText;
+            buttonConfirm_Filter.UseVisualStyleBackColor = true;
+            // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(456, 268);
+            ClientSize = new Size(360, 479);
+            Controls.Add(panelFilter);
             Controls.Add(icon_filter);
             Controls.Add(icon_Search);
             Controls.Add(txt_Search);
-            Controls.Add(filter_box);
             Controls.Add(button_Remove);
             Controls.Add(button_Edit);
             Controls.Add(button_Add);
             Controls.Add(listNames);
             Controls.Add(label1);
             Name = "frmPrincipal";
-            Text = "Notes App";
+            Text = "SimpCon";
             ((System.ComponentModel.ISupportInitialize)icon_Search).EndInit();
             ((System.ComponentModel.ISupportInitialize)icon_filter).EndInit();
+            panelFilter.ResumeLayout(false);
+            panelFilter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)panelFilter_CloseButton).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -161,9 +267,20 @@
         private Button button_Add;
         private Button button_Edit;
         private Button button_Remove;
-        private ComboBox filter_box;
         private TextBox txt_Search;
         private PictureBox icon_Search;
         private PictureBox icon_filter;
+        public Panel panelFilter;
+        private Button buttonConfirm_Filter;
+        private Label panelFilter_labelTitle;
+        private CheckBox checkBox_FilterHaveNumber;
+        private CheckBox checkBox_FilterFavorite;
+        private Label panelFilter_labelAge;
+        private Label panelFilter_labelRelationship;
+        private TextBox panelFilter_txtAge;
+        private ComboBox comboBox1;
+        private PictureBox panelFilter_CloseButton;
     }
+
+
 }

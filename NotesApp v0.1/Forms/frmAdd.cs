@@ -29,6 +29,7 @@ namespace NotesApp_v0._1.frmMenus
             {
                 string name = txtAdd_Name.Text;
                 string phoneNumber = txtAdd_Number.Text;
+                bool favorited = checkBox_Favorite.Checked;
 
                 if (!string.IsNullOrEmpty(txtAdd_Name.Text) && !string.IsNullOrEmpty(txtAdd_Number.Text))
                 {
@@ -36,7 +37,7 @@ namespace NotesApp_v0._1.frmMenus
                     {
                         if (FormValidation.CheckNumberField(phoneNumber))
                         {
-                            DataNotes newUsario = new DataNotes(name, phoneNumber);
+                            DataNotes newUsario = new DataNotes(name, phoneNumber, favorited);
                             ConfirmConcluided(newUsario);
                             MessageBox.Show("The contact is registered!");
                         }

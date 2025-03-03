@@ -16,11 +16,13 @@ namespace NotesApp_v0._1.Models
         Seus ouvintes ou dependentes de forma automatica, caso haja uma alteração nas suas propriedades*/
         private string DataName;
         private string DataNumberPhone;
+        private bool DataFavorited;
 
-        public DataNotes(string name, string numberPhone)
+        public DataNotes(string name, string numberPhone, bool favorited)
         {
             DataName = name;
             DataNumberPhone = numberPhone;
+            DataFavorited = favorited;
         }
 
         //Este método e responsavel de adicionar as funcionalidades de getting e setter, e tornar publico o acesso destas propriedades
@@ -50,6 +52,18 @@ namespace NotesApp_v0._1.Models
                 if (DataNumberPhone != value)
                 {
                     DataNumberPhone = value;
+                }
+            }
+        }
+
+        public bool Favorited
+        {
+            get { return DataFavorited; }
+            set
+            {
+                if (DataFavorited != value)
+                {
+                    DataFavorited = value;
                 }
             }
         }

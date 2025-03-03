@@ -26,9 +26,11 @@ namespace NotesApp_v0._1.frmMenus
             //Envia dos dados a serem preenchidos nos labels e campos de texto
             labelDataName.Text = dataNoteSelecionado.Name;
             labelDataNumber.Text = dataNoteSelecionado.NumberPhone;
+            
 
             txtNameEdit.Text = dataNoteSelecionado.Name;
             txtPhoneEdit.Text = dataNoteSelecionado.NumberPhone;
+            checkBox_FavoriteEdited.Checked = dataNoteSelecionado.Favorited;
 
             this.Shown += new EventHandler(Form1_Shown);//O tipo de evento Shown, ordena que o programa adicione o foco a determinado componente, após o programa ser renderizado
         }                                               //Diferente de Load, que carregaria a ordem antes do programa ser renderizado
@@ -38,6 +40,7 @@ namespace NotesApp_v0._1.frmMenus
         {
             string Name = txtNameEdit.Text;
             string NumberPhone = txtPhoneEdit.Text;
+            bool favorited = checkBox_FavoriteEdited.Checked;
 
             if (!string.IsNullOrEmpty(txtNameEdit.Text) && !string.IsNullOrEmpty(txtPhoneEdit.Text))
             {
@@ -47,7 +50,7 @@ namespace NotesApp_v0._1.frmMenus
                     {
                         if (FormValidation.CheckNumberField(NumberPhone))
                         {
-                            DataNotes editedUsuario = new DataNotes(Name, NumberPhone);
+                            DataNotes editedUsuario = new DataNotes(Name, NumberPhone, favorited);
 
                             ConfirmConcluided(editedUsuario, dataNoteSelecionado);
 

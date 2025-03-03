@@ -33,6 +33,7 @@
             btnAdd_Confirm = new Button();
             label1 = new Label();
             label2 = new Label();
+            checkBox_Favorite = new CheckBox();
             SuspendLayout();
             // 
             // txtAdd_Name
@@ -51,7 +52,7 @@
             // 
             // btnAdd_Confirm
             // 
-            btnAdd_Confirm.Location = new Point(12, 127);
+            btnAdd_Confirm.Location = new Point(12, 153);
             btnAdd_Confirm.Name = "btnAdd_Confirm";
             btnAdd_Confirm.Size = new Size(222, 29);
             btnAdd_Confirm.TabIndex = 2;
@@ -77,11 +78,22 @@
             label2.TabIndex = 4;
             label2.Text = "Name";
             // 
+            // checkBox_Favorite
+            // 
+            checkBox_Favorite.AutoSize = true;
+            checkBox_Favorite.Location = new Point(12, 123);
+            checkBox_Favorite.Name = "checkBox_Favorite";
+            checkBox_Favorite.Size = new Size(87, 24);
+            checkBox_Favorite.TabIndex = 5;
+            checkBox_Favorite.Text = " Favorite";
+            checkBox_Favorite.UseVisualStyleBackColor = true;
+            // 
             // frmAdd
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(283, 168);
+            ClientSize = new Size(283, 194);
+            Controls.Add(checkBox_Favorite);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnAdd_Confirm);
@@ -100,5 +112,6 @@
         private Button btnAdd_Confirm;
         private Label label1;
         private Label label2;
+        private CheckBox checkBox_Favorite;
     }
 }

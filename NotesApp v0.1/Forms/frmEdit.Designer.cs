@@ -35,7 +35,7 @@
             txtPhoneEdit = new TextBox();
             txtNameEdit = new TextBox();
             button_Confirm = new Button();
-            checkBox1 = new CheckBox();
+            checkBox_FavoriteEdited = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -100,22 +100,22 @@
             button_Confirm.UseVisualStyleBackColor = true;
             button_Confirm.Click += button_Confirm_Click;
             // 
-            // checkBox1
+            // checkBox_FavoriteEdited
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(12, 77);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(83, 24);
-            checkBox1.TabIndex = 7;
-            checkBox1.Text = "Favorite";
-            checkBox1.UseVisualStyleBackColor = true;
+            checkBox_FavoriteEdited.AutoSize = true;
+            checkBox_FavoriteEdited.Location = new Point(12, 77);
+            checkBox_FavoriteEdited.Name = "checkBox_FavoriteEdited";
+            checkBox_FavoriteEdited.Size = new Size(83, 24);
+            checkBox_FavoriteEdited.TabIndex = 7;
+            checkBox_FavoriteEdited.Text = "Favorite";
+            checkBox_FavoriteEdited.UseVisualStyleBackColor = true;
             // 
             // frmEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(315, 249);
-            Controls.Add(checkBox1);
+            Controls.Add(checkBox_FavoriteEdited);
             Controls.Add(button_Confirm);
             Controls.Add(txtNameEdit);
             Controls.Add(txtPhoneEdit);
@@ -138,6 +138,6 @@
         private TextBox txtPhoneEdit;
         private TextBox txtNameEdit;
         private Button button_Confirm;
-        private CheckBox checkBox1;
+        private CheckBox checkBox_FavoriteEdited;
     }
 }

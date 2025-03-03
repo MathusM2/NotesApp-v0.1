@@ -25,6 +25,8 @@ namespace NotesApp_v0._1
             listNames.DataSource = bindingSource;//E repassa essas informações para a listbox
             listNames.DisplayMember = "Name";
             listNames.ValueMember = "NumberPhone";
+
+            panelFilter.Visible = false;
         }
 
         //Delegators
@@ -42,13 +44,13 @@ namespace NotesApp_v0._1
             }
         }
 
-        public void EditUsuario(DataNotes editedUsuario,DataNotes dataNoteSelecionado)
+        public void EditUsuario(DataNotes editedUsuario, DataNotes dataNoteSelecionado)
         {
             try
             {
                 ManagerUsuarios.Edit(usuarios, editedUsuario, dataNoteSelecionado);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -95,23 +97,11 @@ namespace NotesApp_v0._1
         }
         //Filter
 
-        //Responsável por esconder o icone de filtro, e exibir a combobox de filtro
+        //Responsável por esconder o icone de filtro, e exibir a sidebar do filtro
 
         private void icon_filter_Click(object sender, EventArgs e)
         {
-            if (filter_box.Visible == false)
-            {
-                icon_filter.Visible = false;
-                filter_box.Visible = true;
-                filter_box.Focus();
-            }
-        }
-        //Responsável por esconder a combobox e exibir o icone de filtro
-        private void filter_box_Leave(object sender, EventArgs e)
-        {
-            filter_box.Visible = false;
-            icon_filter.Visible = true;
-
+            panelFilter.Visible = true;
         }
 
         //Search
@@ -133,6 +123,16 @@ namespace NotesApp_v0._1
             {
                 txt_Search.Text = "Pesquisar";
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelFilter_CloseButton_Click(object sender, EventArgs e)
+        {
+            panelFilter.Visible = false;
         }
     }
 }
