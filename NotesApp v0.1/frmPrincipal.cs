@@ -10,18 +10,18 @@ namespace NotesApp_v0._1
         //Adiciona uma lista de objetos contendo informações digitadas no frmAdd, como o nome e o número de telefone
         //Diferente do metódo List<> que resumindo apenas e uma lista dinâmica, que armazena diferentes tipos de dados, como objetos
         //BindingList<> no caso também e uma lista dinâmica, mas ela conecta as informações na lista e atualiza as informações em interface
-        //De forma automatica, conectando listNames e usuarios
-        private BindingList<DataNotes> usuarios = new BindingList<DataNotes>();
-        //BindingSource e o intermediário entre a fonte de dados(BindingList usuarios) e a interface visual, como o listbox
+        //De forma automatica, conectando listNames e contacts
+        protected BindingList<DataContacts> contacts = new BindingList<DataContacts>();
+        //BindingSource e o intermediário entre a fonte de dados(BindingList contacts) e a interface visual, como o listbox
         //Ele possui DataSource proprio, assim armazena informações em si, e permite alterar itens no listbox, sem alterar a fonte de dados
         //Ele atualiza as informações visuais de acordo com a fonte de dados
-        private BindingSource bindingSource = new BindingSource();
+        protected BindingSource bindingSource = new BindingSource();
         public frmPrincipal()
         {
             InitializeComponent();
 
 
-            bindingSource.DataSource = usuarios;//No caso agora, bindingSource recebe suas informações de usuarios
+            bindingSource.DataSource = contacts;//No caso agora, bindingSource recebe suas informações de contacts
             listNames.DataSource = bindingSource;//E repassa essas informações para a listbox
             listNames.DisplayMember = "Name";
             listNames.ValueMember = "NumberPhone";
@@ -29,14 +29,18 @@ namespace NotesApp_v0._1
             panelFilter.Visible = false;
         }
 
+
+        /*------------------------------------------------------------------------------------------------------------------------------------*/
+
+
         //Delegators
 
-        //Recebe os dados de usuario frmAdd e frmEdit, e chama a classe utilitária ManagerUsuarios
-        public void AddUsuario(DataNotes newUsuario)
+        //Recebe os dados de contact frmAdd e frmEdit, e chama a classe utilitária ManagerContacts
+        public void AddContact(DataContacts newContact)
         {
             try
             {
-                ManagerUsuarios.Add(usuarios, newUsuario);
+                ManagerContacts.Add(contacts, newContact);
             }
             catch (Exception ex)
             {
@@ -44,11 +48,11 @@ namespace NotesApp_v0._1
             }
         }
 
-        public void EditUsuario(DataNotes editedUsuario, DataNotes dataNoteSelecionado)
+        public void EditContact(DataContacts editedContact, DataContacts dataContactsSelected)
         {
             try
             {
-                ManagerUsuarios.Edit(usuarios, editedUsuario, dataNoteSelecionado);
+                ManagerContacts.Edit(contacts, editedContact, dataContactsSelected);
             }
             catch (Exception ex)
             {
@@ -57,6 +61,7 @@ namespace NotesApp_v0._1
         }
 
 
+        /*------------------------------------------------------------------------------------------------------------------------------------*/
 
 
         //UI (User Interface)
@@ -74,8 +79,8 @@ namespace NotesApp_v0._1
             if (listNames.SelectedItem != null)
             {
                 //Abre o Form frmEdit
-                DataNotes DataNotesSelecionado = (DataNotes)listNames.SelectedItem;
-                var editWindow = new frmEdit(this, DataNotesSelecionado);
+                DataContacts DataContactsSelected = (DataContacts)listNames.SelectedItem;
+                var editWindow = new frmEdit(this, DataContactsSelected);
                 editWindow.ShowDialog();
             }
             else
@@ -87,22 +92,52 @@ namespace NotesApp_v0._1
         {
             if (listNames.SelectedItem != null)
             {
-                DataNotes DataNotesSelecionado = (DataNotes)listNames.SelectedItem;
-                ManagerUsuarios.Remove(usuarios, DataNotesSelecionado);
+                DataContacts DataContactsSelected = (DataContacts)listNames.SelectedItem;
+                ManagerContacts.Remove(contacts, DataContactsSelected);
             }
             else
             {
                 MessageBox.Show("Select an item to remove");
             }
         }
+
+
+        /*------------------------------------------------------------------------------------------------------------------------------------*/
+
+
         //Filter
 
-        //Responsável por esconder o icone de filtro, e exibir a sidebar do filtro
+        //Responsável por abrir e esconder a aba de filtragem, da verificação dos campos e do button confirm para envio de dados
 
         private void icon_filter_Click(object sender, EventArgs e)
         {
             panelFilter.Visible = true;
         }
+
+        private void panelFilter_CloseButton_Click(object sender, EventArgs e)
+        {
+            panelFilter.Visible = false;
+        }
+
+        private void buttonConfirm_Filter_Click(object sender, EventArgs e)
+        {
+            string AgeOption = panelFilter_txtAge.Text;
+            var RelationshipOption = panelFilter_comboBoxRelations.Text;
+            bool FavoriteOption = checkBox_FilterFavorite.Checked;
+            bool HaveNumberOption = checkBox_FilterHaveNumber.Checked;
+
+
+            ConfirmOptionsToFilter(FavoriteOption);
+        }
+
+        public void ConfirmOptionsToFilter(bool favoriteOption)
+        {
+            ListFilter.Filter(contacts, bindingSource, favoriteOption);
+        }
+
+
+        /*------------------------------------------------------------------------------------------------------------------------------------*/
+
 
         //Search
 
@@ -110,7 +145,7 @@ namespace NotesApp_v0._1
         private void icon_Search_Click(object sender, EventArgs e)
         {
             var txtSearch = txt_Search.Text;
-            ListSearch.Search(usuarios, bindingSource, txtSearch);//Chama o método de busca, enviando a referência de usuarios e da bindingSource
+            ListSearch.Search(contacts, bindingSource, txtSearch);//Chama o método de busca, enviando a referência de contacts e da bindingSource
         }
         private void txt_Search_Enter(object sender, EventArgs e)
         {
@@ -125,14 +160,6 @@ namespace NotesApp_v0._1
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelFilter_CloseButton_Click(object sender, EventArgs e)
-        {
-            panelFilter.Visible = false;
-        }
+        
     }
 }

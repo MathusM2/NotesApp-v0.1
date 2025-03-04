@@ -80,7 +80,6 @@
             txtPhoneEdit.Name = "txtPhoneEdit";
             txtPhoneEdit.Size = new Size(125, 27);
             txtPhoneEdit.TabIndex = 4;
-            txtPhoneEdit.Leave += txtPhoneEdit_Leave;
             // 
             // txtNameEdit
             // 
@@ -124,7 +123,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "frmEdit";
-            Text = "frmEdit";
+            Text = "Edit Contact";
             ResumeLayout(false);
             PerformLayout();
         }

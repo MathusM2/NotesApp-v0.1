@@ -16,33 +16,42 @@ namespace NotesApp_v0._1.frmMenus
     {
         //recebe a referência de frmPrincipal e do item selecionado na lista(listBox)
         private frmPrincipal frmPrincipal;
-        private DataNotes dataNoteSelecionado;
-        public frmEdit(frmPrincipal principal, DataNotes dataNote)
+        private DataContacts dataContactsSelected;
+        public frmEdit(frmPrincipal principal, DataContacts dataContacts)
         {
             InitializeComponent();
             frmPrincipal = principal;
-            dataNoteSelecionado = dataNote;
+            dataContactsSelected = dataContacts;
 
             //Envia dos dados a serem preenchidos nos labels e campos de texto
-            labelDataName.Text = dataNoteSelecionado.Name;
-            labelDataNumber.Text = dataNoteSelecionado.NumberPhone;
-            
+            labelDataName.Text = dataContactsSelected.Name;
 
-            txtNameEdit.Text = dataNoteSelecionado.Name;
-            txtPhoneEdit.Text = dataNoteSelecionado.NumberPhone;
-            checkBox_FavoriteEdited.Checked = dataNoteSelecionado.Favorited;
+            //Verifica se o usuário definou o contato como sem NumberPhone
+            if (dataContactsSelected.NumberPhone == "")
+            {
+                labelDataNumber.Text = "Empty";
+            }
+            else
+            {
+                labelDataNumber.Text = dataContactsSelected.NumberPhone;
+            }
 
-            this.Shown += new EventHandler(Form1_Shown);//O tipo de evento Shown, ordena que o programa adicione o foco a determinado componente, após o programa ser renderizado
-        }                                               //Diferente de Load, que carregaria a ordem antes do programa ser renderizado
-       
+            //Adiciona aos campos de edição os valores para edição, facilitando a edição ao usuário
+            txtNameEdit.Text = dataContactsSelected.Name;
+            txtPhoneEdit.Text = dataContactsSelected.NumberPhone;
+            checkBox_FavoriteEdited.Checked = dataContactsSelected.Favorited;
 
+            this.Shown += new EventHandler(Form1_Shown);//Tira o foco dos campos de edição
+        }
+
+        //Realiza as checagens para edição
         private void button_Confirm_Click(object sender, EventArgs e)
         {
             string Name = txtNameEdit.Text;
             string NumberPhone = txtPhoneEdit.Text;
             bool favorited = checkBox_FavoriteEdited.Checked;
 
-            if (!string.IsNullOrEmpty(txtNameEdit.Text) && !string.IsNullOrEmpty(txtPhoneEdit.Text))
+            if (!string.IsNullOrEmpty(txtNameEdit.Text))
             {
                 try
                 {
@@ -50,9 +59,9 @@ namespace NotesApp_v0._1.frmMenus
                     {
                         if (FormValidation.CheckNumberField(NumberPhone))
                         {
-                            DataNotes editedUsuario = new DataNotes(Name, NumberPhone, favorited);
+                            DataContacts editedContact = new DataContacts(Name, NumberPhone, favorited);
 
-                            ConfirmConcluided(editedUsuario, dataNoteSelecionado);
+                            ConfirmConcluided(editedContact, dataContactsSelected);
 
                             DialogResult = DialogResult.OK;
                             MessageBox.Show("Contact edited successfully!");
@@ -74,28 +83,22 @@ namespace NotesApp_v0._1.frmMenus
             }
             else
             {
-                MessageBox.Show("Try again or fill in the fields");
+                MessageBox.Show("Try again or fill in the field name");
             }
         }
 
-        public void ConfirmConcluided(DataNotes editedUsuario,DataNotes dataNoteSelecionado)
+        //Ao concluir as checagens, realizada a chamado do delegado EditContact, e repassa os dados
+        public void ConfirmConcluided(DataContacts editedContact, DataContacts dataContactsSelected)
         {
-            frmPrincipal.EditUsuario(editedUsuario, dataNoteSelecionado);
+            frmPrincipal.EditContact(editedContact, dataContactsSelected);
         }
 
+        //Caso o usuário deixe o campo Name vazio, o programa irá reescreve-lo novamente
         private void txtNameEdit_Leave(object sender, EventArgs e)
         {
             if (txtNameEdit.Text == "")
             {
-                txtNameEdit.Text = dataNoteSelecionado.Name;
-            }
-        }
-
-        private void txtPhoneEdit_Leave(object sender, EventArgs e)
-        {
-            if (txtPhoneEdit.Text == "")
-            {
-                txtPhoneEdit.Text = dataNoteSelecionado.NumberPhone;
+                txtNameEdit.Text = dataContactsSelected.Name;
             }
         }
         private void Form1_Shown(object sender, EventArgs e)

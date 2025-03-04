@@ -100,7 +100,7 @@
             Controls.Add(txtAdd_Number);
             Controls.Add(txtAdd_Name);
             Name = "frmAdd";
-            Text = "New Note";
+            Text = "New Contact";
             ResumeLayout(false);
             PerformLayout();
         }

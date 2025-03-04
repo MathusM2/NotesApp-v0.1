@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace NotesApp_v0._1.Models
 {
-    public class DataNotes : INotifyPropertyChanged
+    public class DataContacts : INotifyPropertyChanged
     {
         /*O uso de private, e para tornar as propriedades controladas, e que não sejam acessadas por outros escopos diretamente
         Assim usando get e set, get para enviar a leitura da variavel, e set para receber um alteração dessa variavel, com a possibilidade
         de adicionar verificações, ou adicionar funções, como no caso INotifyPropertryChanged
-        Ao adiciona-la dentro da estrutura do Objeto DataNotes, isso garante que todo o objeto do tipo DataNotes possua a função de notificar
+        Ao adiciona-la dentro da estrutura do Objeto DataContacts, isso garante que todo o objeto do tipo DataContacts possua a função de notificar
         Seus ouvintes ou dependentes de forma automatica, caso haja uma alteração nas suas propriedades*/
         private string DataName;
         private string DataNumberPhone;
         private bool DataFavorited;
 
-        public DataNotes(string name, string numberPhone, bool favorited)
+        public DataContacts(string name, string numberPhone, bool favorited)
         {
             DataName = name;
             DataNumberPhone = numberPhone;
@@ -35,7 +35,7 @@ namespace NotesApp_v0._1.Models
             {
 
 
-                if (DataName != value)//Verificação se o valor recebido de um código externo para alteração, NÃO e igual ao DataName(Valor Atual da propriedade Name do objeto DataNotes)
+                if (DataName != value)//Verificação se o valor recebido de um código externo para alteração, NÃO e igual ao DataName(Valor Atual da propriedade Name do objeto DataContacts)
                 {
                     DataName = value;//DataName recebe o valor do código externo para alteração
                     NotifyPropertyChanged(nameof(Name));//Chama o método NotifyPropertyChanged e passa o Nome da propriedade alterada
@@ -74,7 +74,7 @@ namespace NotesApp_v0._1.Models
         {
             if (PropertyChanged != null)//Verifica se um evento foi acionado, no caso alteração na propriedade
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(proportyName));//Aqui e construido a mensagem de notificação, enviando "this", referenciando o codigo atual de DataNotes e "propertyName" que envia o nome da variavel alterada ao ouvinte
+                PropertyChanged(this, new PropertyChangedEventArgs(proportyName));//Aqui e construido a mensagem de notificação, enviando "this", referenciando o codigo atual de DataContacts e "propertyName" que envia o nome da variavel alterada ao ouvinte
             }
         }
 

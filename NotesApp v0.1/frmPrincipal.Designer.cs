@@ -39,7 +39,7 @@
             icon_filter = new PictureBox();
             panelFilter = new Panel();
             panelFilter_CloseButton = new PictureBox();
-            comboBox1 = new ComboBox();
+            panelFilter_comboBoxRelations = new ComboBox();
             panelFilter_txtAge = new TextBox();
             panelFilter_labelAge = new Label();
             panelFilter_labelRelationship = new Label();
@@ -136,7 +136,7 @@
             // 
             panelFilter.BackColor = SystemColors.Window;
             panelFilter.Controls.Add(panelFilter_CloseButton);
-            panelFilter.Controls.Add(comboBox1);
+            panelFilter.Controls.Add(panelFilter_comboBoxRelations);
             panelFilter.Controls.Add(panelFilter_txtAge);
             panelFilter.Controls.Add(panelFilter_labelAge);
             panelFilter.Controls.Add(panelFilter_labelRelationship);
@@ -144,11 +144,10 @@
             panelFilter.Controls.Add(checkBox_FilterFavorite);
             panelFilter.Controls.Add(panelFilter_labelTitle);
             panelFilter.Controls.Add(buttonConfirm_Filter);
-            panelFilter.Location = new Point(12, 55);
+            panelFilter.Location = new Point(-3, 55);
             panelFilter.Name = "panelFilter";
             panelFilter.Size = new Size(202, 402);
             panelFilter.TabIndex = 10;
-            panelFilter.Paint += panel1_Paint;
             // 
             // panelFilter_CloseButton
             // 
@@ -161,14 +160,14 @@
             panelFilter_CloseButton.TabStop = false;
             panelFilter_CloseButton.Click += panelFilter_CloseButton_Click;
             // 
-            // comboBox1
+            // panelFilter_comboBoxRelations
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
-            comboBox1.Location = new Point(10, 133);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 16;
+            panelFilter_comboBoxRelations.FormattingEnabled = true;
+            panelFilter_comboBoxRelations.Items.AddRange(new object[] { "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
+            panelFilter_comboBoxRelations.Location = new Point(10, 133);
+            panelFilter_comboBoxRelations.Name = "panelFilter_comboBoxRelations";
+            panelFilter_comboBoxRelations.Size = new Size(151, 28);
+            panelFilter_comboBoxRelations.TabIndex = 16;
             // 
             // panelFilter_txtAge
             // 
@@ -234,6 +233,7 @@
             buttonConfirm_Filter.Text = "Confirm";
             buttonConfirm_Filter.TextImageRelation = TextImageRelation.ImageAboveText;
             buttonConfirm_Filter.UseVisualStyleBackColor = true;
+            buttonConfirm_Filter.Click += buttonConfirm_Filter_Click;
             // 
             // frmPrincipal
             // 
@@ -271,16 +271,14 @@
         private PictureBox icon_Search;
         private PictureBox icon_filter;
         public Panel panelFilter;
-        private Button buttonConfirm_Filter;
-        private Label panelFilter_labelTitle;
-        private CheckBox checkBox_FilterHaveNumber;
-        private CheckBox checkBox_FilterFavorite;
-        private Label panelFilter_labelAge;
-        private Label panelFilter_labelRelationship;
-        private TextBox panelFilter_txtAge;
-        private ComboBox comboBox1;
-        private PictureBox panelFilter_CloseButton;
+        protected Button buttonConfirm_Filter;
+        protected Label panelFilter_labelTitle;
+        protected CheckBox checkBox_FilterHaveNumber;
+        protected CheckBox checkBox_FilterFavorite;
+        protected Label panelFilter_labelAge;
+        protected Label panelFilter_labelRelationship;
+        protected TextBox panelFilter_txtAge;
+        protected ComboBox panelFilter_comboBoxRelations;
+        protected PictureBox panelFilter_CloseButton;
     }
-
-
 }

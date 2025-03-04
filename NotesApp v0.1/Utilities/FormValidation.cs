@@ -20,14 +20,22 @@ namespace NotesApp_v0._1.Utilities
 
         public static bool CheckNumberField(string phoneNumber)
         {
-            if (!ContainsOnlyNumbers(phoneNumber) || phoneNumber.Length != 8)
+            if (phoneNumber == "")
             {
+                MessageBox.Show("Ok vazio");
+                return true;
+                
+            }
+            else if (!ContainsOnlyNumbers(phoneNumber) || phoneNumber.Length != 8)
+            {
+                MessageBox.Show("Ok falso");
                 return false;
             }
+            MessageBox.Show("Ok passou");
             return true;
         }
 
-        public static bool ContainsNumbers(string input)
+        public static bool ContainsNumbers(string input) //Verifica se o campo do nome, contém números ou dígito
         {
             foreach (char c in input)
             {
@@ -39,7 +47,7 @@ namespace NotesApp_v0._1.Utilities
             return false;
         }
 
-        public static bool ContainsOnlyNumbers(string input)
+        public static bool ContainsOnlyNumbers(string input) //Verifica se o campo possui apenas dígitos
         {
             foreach (char c in input)
             {

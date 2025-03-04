@@ -23,6 +23,7 @@ namespace NotesApp_v0._1.frmMenus
             frmPrincipal = principal;
         }
 
+        //E realizado a checagem dos campos para adicionar um novo contato
         private void btnAdd_Confirm_Click(object sender, EventArgs e)
         {
             try
@@ -31,14 +32,16 @@ namespace NotesApp_v0._1.frmMenus
                 string phoneNumber = txtAdd_Number.Text;
                 bool favorited = checkBox_Favorite.Checked;
 
-                if (!string.IsNullOrEmpty(txtAdd_Name.Text) && !string.IsNullOrEmpty(txtAdd_Number.Text))
+
+                //Verifica se o campo para o name esta vazio, e realiza as validações dos campos name e phoneNumber
+                if (!string.IsNullOrEmpty(txtAdd_Name.Text))
                 {
                     if (FormValidation.CheckNameField(name))
                     {
                         if (FormValidation.CheckNumberField(phoneNumber))
                         {
-                            DataNotes newUsario = new DataNotes(name, phoneNumber, favorited);
-                            ConfirmConcluided(newUsario);
+                            DataContacts newContact = new DataContacts(name, phoneNumber, favorited);
+                            ConfirmConcluided(newContact);
                             MessageBox.Show("The contact is registered!");
                         }
                         else
@@ -54,7 +57,7 @@ namespace NotesApp_v0._1.frmMenus
                 }
                 else
                 {
-                    MessageBox.Show("Try again, field cannot be empty!");
+                    MessageBox.Show("Try again, field name cannot be empty!");
                 }
             }
             catch (Exception ex)
@@ -64,11 +67,11 @@ namespace NotesApp_v0._1.frmMenus
         }
 
         
-        //Após passar em todos os "checks", e chamado o método AddToList
-        private void ConfirmConcluided(DataNotes newUsuario)
+        //Após passar em todos os "checks", e chamado o método AddContact
+        private void ConfirmConcluided(DataContacts newContact)
         {
-            //Chama o metódo AddUsuario, repassando os dados, e returna DialogResult.ok, finalizando a janela
-            frmPrincipal.AddUsuario(newUsuario);
+            //Chama o método AddContact, repassando os dados, e returna DialogResult.ok, finalizando a janela
+            frmPrincipal.AddContact(newContact);
             DialogResult = DialogResult.OK;
         }
 
