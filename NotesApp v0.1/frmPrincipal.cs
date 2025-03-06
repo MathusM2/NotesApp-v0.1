@@ -2,6 +2,7 @@ using NotesApp_v0._1.frmMenus;
 using System.ComponentModel;
 using NotesApp_v0._1.Models;
 using NotesApp_v0._1.Utilities;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NotesApp_v0._1
 {
@@ -121,18 +122,40 @@ namespace NotesApp_v0._1
 
         private void buttonConfirm_Filter_Click(object sender, EventArgs e)
         {
-            string AgeOption = panelFilter_txtAge.Text;
-            var RelationshipOption = panelFilter_comboBoxRelations.Text;
+            int AgeField;
+            var RelationshipField = panelFilter_comboBoxRelations.Text;
             bool FavoriteOption = checkBox_FilterFavorite.Checked;
             bool HaveNumberOption = checkBox_FilterHaveNumber.Checked;
+            if (int.TryParse(panelFilterInput_Age.Text, out AgeField))
+            {
+
+            }
+            else if (AgeField == 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("A idade não é valida!");
+            }
 
 
-            ConfirmOptionsToFilter(FavoriteOption);
+            ConfirmOptionsToFilter(HaveNumberOption, FavoriteOption, AgeField);
         }
 
-        public void ConfirmOptionsToFilter(bool favoriteOption)
+        public void ConfirmOptionsToFilter(bool haveNumberOption, bool favoriteOption, int ageField)
         {
-            ListFilter.Filter(contacts, bindingSource, favoriteOption);
+            if (haveNumberOption == true || favoriteOption == true || ageField > 0)
+            {
+                var filtredItens = ListFilter.Filter(contacts, haveNumberOption, favoriteOption, ageField); //Chama o método de filtragem e recebe uma lista IEnumerable
+
+                bindingSource.DataSource = filtredItens; //Muda a referência de bindingSource para filtredItens
+                panelFilter.Visible = false;
+            }
+            else
+            {
+                bindingSource.DataSource = contacts; //Caso nada seja filtrado, a lista e restaurada
+            }
         }
 
 
@@ -160,6 +183,12 @@ namespace NotesApp_v0._1
             }
         }
 
-        
+        //Reset
+
+        //Reseta a lista para a referência original
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            bindingSource.DataSource = contacts;
+        }
     }
 }

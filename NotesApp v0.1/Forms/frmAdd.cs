@@ -31,7 +31,29 @@ namespace NotesApp_v0._1.frmMenus
                 string name = txtAdd_Name.Text;
                 string phoneNumber = txtAdd_Number.Text;
                 bool favorited = checkBox_Favorite.Checked;
+                bool hasNumber;
+                int age;
 
+                if (int.TryParse(input_Age.Text.Replace(" ", ""), out age))
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("Invalid age!","Confirmation:",  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                //Verifica se o contato irá possuir número de telefone
+                if (string.IsNullOrEmpty(txtAdd_Number.Text))
+                {
+                    hasNumber = false; //Não possui
+                    MessageBox.Show("Não Possui");
+                }
+                else
+                {
+                    hasNumber = true; //Possui
+                    MessageBox.Show("Possui");
+                }
 
                 //Verifica se o campo para o name esta vazio, e realiza as validações dos campos name e phoneNumber
                 if (!string.IsNullOrEmpty(txtAdd_Name.Text))
@@ -40,9 +62,12 @@ namespace NotesApp_v0._1.frmMenus
                     {
                         if (FormValidation.CheckNumberField(phoneNumber))
                         {
-                            DataContacts newContact = new DataContacts(name, phoneNumber, favorited);
-                            ConfirmConcluided(newContact);
-                            MessageBox.Show("The contact is registered!");
+                            if (FormValidation.CheckAgeField(age))
+                            {
+                                DataContacts newContact = new DataContacts(name, phoneNumber, favorited, hasNumber, age);
+                                ConfirmConcluided(newContact);
+                                MessageBox.Show("The contact is registered!");
+                            }
                         }
                         else
                         {
@@ -66,7 +91,7 @@ namespace NotesApp_v0._1.frmMenus
             }
         }
 
-        
+
         //Após passar em todos os "checks", e chamado o método AddContact
         private void ConfirmConcluided(DataContacts newContact)
         {
@@ -74,6 +99,7 @@ namespace NotesApp_v0._1.frmMenus
             frmPrincipal.AddContact(newContact);
             DialogResult = DialogResult.OK;
         }
+
 
     }
 }

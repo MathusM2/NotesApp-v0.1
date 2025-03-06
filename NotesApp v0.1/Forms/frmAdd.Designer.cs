@@ -34,27 +34,31 @@
             label1 = new Label();
             label2 = new Label();
             checkBox_Favorite = new CheckBox();
+            label3 = new Label();
+            comboBox_Relationship = new ComboBox();
+            label4 = new Label();
+            input_Age = new MaskedTextBox();
             SuspendLayout();
             // 
             // txtAdd_Name
             // 
-            txtAdd_Name.Location = new Point(12, 29);
+            txtAdd_Name.Location = new Point(12, 50);
             txtAdd_Name.Name = "txtAdd_Name";
-            txtAdd_Name.Size = new Size(189, 27);
+            txtAdd_Name.Size = new Size(193, 27);
             txtAdd_Name.TabIndex = 0;
             // 
             // txtAdd_Number
             // 
-            txtAdd_Number.Location = new Point(12, 82);
+            txtAdd_Number.Location = new Point(12, 103);
             txtAdd_Number.Name = "txtAdd_Number";
-            txtAdd_Number.Size = new Size(189, 27);
+            txtAdd_Number.Size = new Size(193, 27);
             txtAdd_Number.TabIndex = 1;
             // 
             // btnAdd_Confirm
             // 
-            btnAdd_Confirm.Location = new Point(12, 153);
+            btnAdd_Confirm.Location = new Point(12, 286);
             btnAdd_Confirm.Name = "btnAdd_Confirm";
-            btnAdd_Confirm.Size = new Size(222, 29);
+            btnAdd_Confirm.Size = new Size(193, 29);
             btnAdd_Confirm.TabIndex = 2;
             btnAdd_Confirm.Text = "Confirm";
             btnAdd_Confirm.UseVisualStyleBackColor = true;
@@ -63,7 +67,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 59);
+            label1.Location = new Point(12, 80);
             label1.Name = "label1";
             label1.Size = new Size(108, 20);
             label1.TabIndex = 3;
@@ -72,7 +76,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 6);
+            label2.Location = new Point(12, 27);
             label2.Name = "label2";
             label2.Size = new Size(49, 20);
             label2.TabIndex = 4;
@@ -81,18 +85,58 @@
             // checkBox_Favorite
             // 
             checkBox_Favorite.AutoSize = true;
-            checkBox_Favorite.Location = new Point(12, 123);
+            checkBox_Favorite.Location = new Point(12, 189);
             checkBox_Favorite.Name = "checkBox_Favorite";
             checkBox_Favorite.Size = new Size(87, 24);
             checkBox_Favorite.TabIndex = 5;
             checkBox_Favorite.Text = " Favorite";
             checkBox_Favorite.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 133);
+            label3.Name = "label3";
+            label3.Size = new Size(36, 20);
+            label3.TabIndex = 7;
+            label3.Text = "Age";
+            // 
+            // comboBox_Relationship
+            // 
+            comboBox_Relationship.FormattingEnabled = true;
+            comboBox_Relationship.Items.AddRange(new object[] { "", "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
+            comboBox_Relationship.Location = new Point(54, 155);
+            comboBox_Relationship.Name = "comboBox_Relationship";
+            comboBox_Relationship.Size = new Size(151, 28);
+            comboBox_Relationship.TabIndex = 8;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(54, 133);
+            label4.Name = "label4";
+            label4.Size = new Size(91, 20);
+            label4.TabIndex = 9;
+            label4.Text = "Relationship";
+            // 
+            // input_Age
+            // 
+            input_Age.Location = new Point(12, 155);
+            input_Age.Mask = "000";
+            input_Age.Name = "input_Age";
+            input_Age.Size = new Size(36, 27);
+            input_Age.TabIndex = 10;
+            input_Age.ValidatingType = typeof(int);
+            // 
             // frmAdd
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(283, 194);
+            ClientSize = new Size(289, 327);
+            Controls.Add(input_Age);
+            Controls.Add(label4);
+            Controls.Add(comboBox_Relationship);
+            Controls.Add(label3);
             Controls.Add(checkBox_Favorite);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -113,5 +157,9 @@
         private Label label1;
         private Label label2;
         private CheckBox checkBox_Favorite;
+        private Label label3;
+        private ComboBox comboBox_Relationship;
+        private Label label4;
+        private MaskedTextBox input_Age;
     }
 }

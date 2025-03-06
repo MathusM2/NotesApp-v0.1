@@ -17,12 +17,17 @@ namespace NotesApp_v0._1.Models
         private string DataName;
         private string DataNumberPhone;
         private bool DataFavorited;
+        private bool DataHasNumber;
+        private int DataAge;
+        private string DataRelationship;
 
-        public DataContacts(string name, string numberPhone, bool favorited)
+        public DataContacts(string name, string numberPhone, bool favorited, bool hasNumber, int age)
         {
             DataName = name;
             DataNumberPhone = numberPhone;
             DataFavorited = favorited;
+            DataHasNumber = hasNumber;
+            DataAge = age;
         }
 
         //Este método e responsavel de adicionar as funcionalidades de getting e setter, e tornar publico o acesso destas propriedades
@@ -68,6 +73,29 @@ namespace NotesApp_v0._1.Models
             }
         }
 
+        public bool HasNumber
+        {
+            get { return DataHasNumber; }
+            set
+            {
+                if(DataHasNumber != value)
+                {
+                    DataHasNumber = value;
+                }
+            }
+        }
+
+        public int Age
+        {
+            get { return DataAge; }
+            set
+            {
+                if (DataAge != value)
+                {
+                    DataAge = value;
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;//Aqui esta sendo declarado o nome do evento responsável por delegar aos ouvintes a notificação de uma alteração na propriedade
         protected virtual void NotifyPropertyChanged(string proportyName)//Esse e o método responsável por enviar para os ouvintes qual foi a alteração, usando o nome da propriedade recebida

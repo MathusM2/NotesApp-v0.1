@@ -36,10 +36,29 @@ namespace NotesApp_v0._1.frmMenus
                 labelDataNumber.Text = dataContactsSelected.NumberPhone;
             }
 
+            //Verifica se o usuário definou a idade do contato
+            if (dataContactsSelected.Age > 0)
+            {
+                labelDataAge.Text = Convert.ToString(dataContactsSelected.Age);
+            }
+            else if(dataContactsSelected.Age == 0)
+            {
+                labelDataAge.Text = "Without";
+            }
+
             //Adiciona aos campos de edição os valores para edição, facilitando a edição ao usuário
             txtNameEdit.Text = dataContactsSelected.Name;
             txtPhoneEdit.Text = dataContactsSelected.NumberPhone;
+            if (dataContactsSelected.Age > 0)
+            {
+                inputAgeEdit.Text = Convert.ToString(dataContactsSelected.Age);
+            }
+            else
+            {
+                inputAgeEdit.Text = null;
+            }
             checkBox_FavoriteEdited.Checked = dataContactsSelected.Favorited;
+
 
             this.Shown += new EventHandler(Form1_Shown);//Tira o foco dos campos de edição
         }
@@ -50,6 +69,31 @@ namespace NotesApp_v0._1.frmMenus
             string Name = txtNameEdit.Text;
             string NumberPhone = txtPhoneEdit.Text;
             bool favorited = checkBox_FavoriteEdited.Checked;
+            bool hasNumber;
+            int age;
+
+            if (int.TryParse(inputAgeEdit.Text.Replace(" ", ""), out age))
+            {
+
+            }
+            else 
+            {
+                MessageBox.Show("Invalid age!", "Confirmation:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            MessageBox.Show(Convert.ToString(age));
+
+            //Verifica se o contato irá possuir número de telefone
+            if (string.IsNullOrEmpty(NumberPhone))
+            {
+                hasNumber = false; //Não possui
+                MessageBox.Show("Não Possui");
+            }
+            else
+            {
+                hasNumber = true; //Possui
+                MessageBox.Show("Possui");
+            }
 
             if (!string.IsNullOrEmpty(txtNameEdit.Text))
             {
@@ -59,12 +103,15 @@ namespace NotesApp_v0._1.frmMenus
                     {
                         if (FormValidation.CheckNumberField(NumberPhone))
                         {
-                            DataContacts editedContact = new DataContacts(Name, NumberPhone, favorited);
+                            if (FormValidation.CheckAgeField(age))
+                            {
+                                DataContacts editedContact = new DataContacts(Name, NumberPhone, favorited, hasNumber, age);
 
-                            ConfirmConcluided(editedContact, dataContactsSelected);
+                                ConfirmConcluided(editedContact, dataContactsSelected);
 
-                            DialogResult = DialogResult.OK;
-                            MessageBox.Show("Contact edited successfully!");
+                                DialogResult = DialogResult.OK;
+                                MessageBox.Show("Contact edited successfully!");
+                            }
                         }
                         else
                         {

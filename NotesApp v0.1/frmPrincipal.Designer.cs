@@ -38,19 +38,21 @@
             icon_Search = new PictureBox();
             icon_filter = new PictureBox();
             panelFilter = new Panel();
+            panelFilterInput_Age = new MaskedTextBox();
             panelFilter_CloseButton = new PictureBox();
             panelFilter_comboBoxRelations = new ComboBox();
-            panelFilter_txtAge = new TextBox();
             panelFilter_labelAge = new Label();
             panelFilter_labelRelationship = new Label();
             checkBox_FilterHaveNumber = new CheckBox();
             checkBox_FilterFavorite = new CheckBox();
             panelFilter_labelTitle = new Label();
             buttonConfirm_Filter = new Button();
+            resetListButton = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)icon_Search).BeginInit();
             ((System.ComponentModel.ISupportInitialize)icon_filter).BeginInit();
             panelFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)panelFilter_CloseButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)resetListButton).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -72,7 +74,7 @@
             // 
             // button_Add
             // 
-            button_Add.Location = new Point(220, 153);
+            button_Add.Location = new Point(244, 153);
             button_Add.Name = "button_Add";
             button_Add.Size = new Size(94, 29);
             button_Add.TabIndex = 2;
@@ -82,7 +84,7 @@
             // 
             // button_Edit
             // 
-            button_Edit.Location = new Point(220, 188);
+            button_Edit.Location = new Point(244, 189);
             button_Edit.Name = "button_Edit";
             button_Edit.Size = new Size(94, 29);
             button_Edit.TabIndex = 3;
@@ -92,7 +94,7 @@
             // 
             // button_Remove
             // 
-            button_Remove.Location = new Point(220, 224);
+            button_Remove.Location = new Point(244, 224);
             button_Remove.Name = "button_Remove";
             button_Remove.Size = new Size(94, 29);
             button_Remove.TabIndex = 4;
@@ -135,19 +137,28 @@
             // panelFilter
             // 
             panelFilter.BackColor = SystemColors.Window;
+            panelFilter.Controls.Add(panelFilterInput_Age);
             panelFilter.Controls.Add(panelFilter_CloseButton);
             panelFilter.Controls.Add(panelFilter_comboBoxRelations);
-            panelFilter.Controls.Add(panelFilter_txtAge);
             panelFilter.Controls.Add(panelFilter_labelAge);
             panelFilter.Controls.Add(panelFilter_labelRelationship);
             panelFilter.Controls.Add(checkBox_FilterHaveNumber);
             panelFilter.Controls.Add(checkBox_FilterFavorite);
             panelFilter.Controls.Add(panelFilter_labelTitle);
             panelFilter.Controls.Add(buttonConfirm_Filter);
-            panelFilter.Location = new Point(-3, 55);
+            panelFilter.Location = new Point(12, 65);
             panelFilter.Name = "panelFilter";
             panelFilter.Size = new Size(202, 402);
             panelFilter.TabIndex = 10;
+            // 
+            // panelFilterInput_Age
+            // 
+            panelFilterInput_Age.Location = new Point(10, 118);
+            panelFilterInput_Age.Mask = "000";
+            panelFilterInput_Age.Name = "panelFilterInput_Age";
+            panelFilterInput_Age.Size = new Size(30, 27);
+            panelFilterInput_Age.TabIndex = 18;
+            panelFilterInput_Age.ValidatingType = typeof(int);
             // 
             // panelFilter_CloseButton
             // 
@@ -163,23 +174,16 @@
             // panelFilter_comboBoxRelations
             // 
             panelFilter_comboBoxRelations.FormattingEnabled = true;
-            panelFilter_comboBoxRelations.Items.AddRange(new object[] { "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
-            panelFilter_comboBoxRelations.Location = new Point(10, 133);
+            panelFilter_comboBoxRelations.Items.AddRange(new object[] { "", "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
+            panelFilter_comboBoxRelations.Location = new Point(10, 64);
             panelFilter_comboBoxRelations.Name = "panelFilter_comboBoxRelations";
             panelFilter_comboBoxRelations.Size = new Size(151, 28);
             panelFilter_comboBoxRelations.TabIndex = 16;
             // 
-            // panelFilter_txtAge
-            // 
-            panelFilter_txtAge.Location = new Point(10, 80);
-            panelFilter_txtAge.Name = "panelFilter_txtAge";
-            panelFilter_txtAge.Size = new Size(111, 27);
-            panelFilter_txtAge.TabIndex = 15;
-            // 
             // panelFilter_labelAge
             // 
             panelFilter_labelAge.AutoSize = true;
-            panelFilter_labelAge.Location = new Point(10, 57);
+            panelFilter_labelAge.Location = new Point(10, 95);
             panelFilter_labelAge.Name = "panelFilter_labelAge";
             panelFilter_labelAge.Size = new Size(36, 20);
             panelFilter_labelAge.TabIndex = 13;
@@ -188,7 +192,7 @@
             // panelFilter_labelRelationship
             // 
             panelFilter_labelRelationship.AutoSize = true;
-            panelFilter_labelRelationship.Location = new Point(10, 110);
+            panelFilter_labelRelationship.Location = new Point(10, 42);
             panelFilter_labelRelationship.Name = "panelFilter_labelRelationship";
             panelFilter_labelRelationship.Size = new Size(91, 20);
             panelFilter_labelRelationship.TabIndex = 12;
@@ -235,6 +239,17 @@
             buttonConfirm_Filter.UseVisualStyleBackColor = true;
             buttonConfirm_Filter.Click += buttonConfirm_Filter_Click;
             // 
+            // resetListButton
+            // 
+            resetListButton.Image = (Image)resources.GetObject("resetListButton.Image");
+            resetListButton.Location = new Point(174, 156);
+            resetListButton.Name = "resetListButton";
+            resetListButton.Size = new Size(25, 26);
+            resetListButton.SizeMode = PictureBoxSizeMode.Zoom;
+            resetListButton.TabIndex = 11;
+            resetListButton.TabStop = false;
+            resetListButton.Click += pictureBox1_Click;
+            // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -249,6 +264,7 @@
             Controls.Add(button_Add);
             Controls.Add(listNames);
             Controls.Add(label1);
+            Controls.Add(resetListButton);
             Name = "frmPrincipal";
             Text = "SimpCon";
             ((System.ComponentModel.ISupportInitialize)icon_Search).EndInit();
@@ -256,6 +272,7 @@
             panelFilter.ResumeLayout(false);
             panelFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)panelFilter_CloseButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)resetListButton).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -277,8 +294,9 @@
         protected CheckBox checkBox_FilterFavorite;
         protected Label panelFilter_labelAge;
         protected Label panelFilter_labelRelationship;
-        protected TextBox panelFilter_txtAge;
         protected ComboBox panelFilter_comboBoxRelations;
         protected PictureBox panelFilter_CloseButton;
+        private MaskedTextBox panelFilterInput_Age;
+        private PictureBox resetListButton;
     }
 }
