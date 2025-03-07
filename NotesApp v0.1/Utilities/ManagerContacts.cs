@@ -50,6 +50,7 @@ namespace NotesApp_v0._1.Utilities
                 dataContactsSelected.Favorited = editedContact.Favorited;
                 dataContactsSelected.HasNumber = editedContact.HasNumber;
                 dataContactsSelected.Age = editedContact.Age;
+                dataContactsSelected.Relationship = editedContact.Relationship;
                 
 
 

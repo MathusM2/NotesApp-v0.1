@@ -45,6 +45,10 @@ namespace NotesApp_v0._1.frmMenus
             {
                 labelDataAge.Text = "Without";
             }
+            labelDataRelationship.Text = dataContactsSelected.Relationship;
+            
+
+            /*-------------------------------------------------------------------------------------------------------------------------------*/
 
             //Adiciona aos campos de edição os valores para edição, facilitando a edição ao usuário
             txtNameEdit.Text = dataContactsSelected.Name;
@@ -58,6 +62,7 @@ namespace NotesApp_v0._1.frmMenus
                 inputAgeEdit.Text = null;
             }
             checkBox_FavoriteEdited.Checked = dataContactsSelected.Favorited;
+            comboBoxRelationshipEdit.Text = dataContactsSelected.Relationship;
 
 
             this.Shown += new EventHandler(Form1_Shown);//Tira o foco dos campos de edição
@@ -68,6 +73,7 @@ namespace NotesApp_v0._1.frmMenus
         {
             string Name = txtNameEdit.Text;
             string NumberPhone = txtPhoneEdit.Text;
+            string Relationship = comboBoxRelationshipEdit.Text;
             bool favorited = checkBox_FavoriteEdited.Checked;
             bool hasNumber;
             int age;
@@ -105,7 +111,7 @@ namespace NotesApp_v0._1.frmMenus
                         {
                             if (FormValidation.CheckAgeField(age))
                             {
-                                DataContacts editedContact = new DataContacts(Name, NumberPhone, favorited, hasNumber, age);
+                                DataContacts editedContact = new DataContacts(Name, NumberPhone, favorited, hasNumber, age, Relationship);
 
                                 ConfirmConcluided(editedContact, dataContactsSelected);
 

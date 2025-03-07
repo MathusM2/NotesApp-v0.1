@@ -30,6 +30,7 @@ namespace NotesApp_v0._1.frmMenus
             {
                 string name = txtAdd_Name.Text;
                 string phoneNumber = txtAdd_Number.Text;
+                string relationship = comboBox_Relationship.Text;
                 bool favorited = checkBox_Favorite.Checked;
                 bool hasNumber;
                 int age;
@@ -64,7 +65,7 @@ namespace NotesApp_v0._1.frmMenus
                         {
                             if (FormValidation.CheckAgeField(age))
                             {
-                                DataContacts newContact = new DataContacts(name, phoneNumber, favorited, hasNumber, age);
+                                DataContacts newContact = new DataContacts(name, phoneNumber, favorited, hasNumber, age, relationship);
                                 ConfirmConcluided(newContact);
                                 MessageBox.Show("The contact is registered!");
                             }

@@ -21,13 +21,14 @@ namespace NotesApp_v0._1.Models
         private int DataAge;
         private string DataRelationship;
 
-        public DataContacts(string name, string numberPhone, bool favorited, bool hasNumber, int age)
+        public DataContacts(string name, string numberPhone, bool favorited, bool hasNumber, int age, string relationship)
         {
             DataName = name;
             DataNumberPhone = numberPhone;
             DataFavorited = favorited;
             DataHasNumber = hasNumber;
             DataAge = age;
+            DataRelationship = relationship;
         }
 
         //Este método e responsavel de adicionar as funcionalidades de getting e setter, e tornar publico o acesso destas propriedades
@@ -93,6 +94,18 @@ namespace NotesApp_v0._1.Models
                 if (DataAge != value)
                 {
                     DataAge = value;
+                }
+            }
+        }
+
+        public string Relationship
+        {
+            get { return DataRelationship; }
+            set
+            {
+                if (DataRelationship != value)
+                {
+                    DataRelationship = value;
                 }
             }
         }

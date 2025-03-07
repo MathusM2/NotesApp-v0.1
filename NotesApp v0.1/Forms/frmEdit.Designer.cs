@@ -44,6 +44,8 @@
             inputAgeEdit = new MaskedTextBox();
             label6 = new Label();
             label7 = new Label();
+            label8 = new Label();
+            labelDataRelationship = new Label();
             SuspendLayout();
             // 
             // label1
@@ -156,6 +158,7 @@
             // comboBoxRelationshipEdit
             // 
             comboBoxRelationshipEdit.FormattingEnabled = true;
+            comboBoxRelationshipEdit.Items.AddRange(new object[] { "", "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
             comboBoxRelationshipEdit.Location = new Point(51, 138);
             comboBoxRelationshipEdit.Name = "comboBoxRelationshipEdit";
             comboBoxRelationshipEdit.Size = new Size(151, 28);
@@ -188,11 +191,31 @@
             label7.TabIndex = 15;
             label7.Text = "Relationship";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(242, 85);
+            label8.Name = "label8";
+            label8.Size = new Size(64, 20);
+            label8.TabIndex = 16;
+            label8.Text = "Relation";
+            // 
+            // labelDataRelationship
+            // 
+            labelDataRelationship.AutoSize = true;
+            labelDataRelationship.Location = new Point(315, 85);
+            labelDataRelationship.Name = "labelDataRelationship";
+            labelDataRelationship.Size = new Size(18, 20);
+            labelDataRelationship.TabIndex = 17;
+            labelDataRelationship.Text = "...";
+            // 
             // frmEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(431, 289);
+            Controls.Add(labelDataRelationship);
+            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(inputAgeEdit);
@@ -233,5 +256,7 @@
         private MaskedTextBox inputAgeEdit;
         private Label label6;
         private Label label7;
+        private Label label8;
+        private Label labelDataRelationship;
     }
 }
