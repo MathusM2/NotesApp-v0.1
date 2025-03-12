@@ -15,13 +15,18 @@ namespace NotesApp_v0._1.Models
         Ao adiciona-la dentro da estrutura do Objeto DataContacts, isso garante que todo o objeto do tipo DataContacts possua a função de notificar
         Seus ouvintes ou dependentes de forma automatica, caso haja uma alteração nas suas propriedades*/
         private string DataName;
+        private string DataLastName;
         private string DataNumberPhone;
         private bool DataFavorited;
         private bool DataHasNumber;
         private int DataAge;
         private string DataRelationship;
+        private string DataGender;
+        private string DataCommentary;
 
-        public DataContacts(string name, string numberPhone, bool favorited, bool hasNumber, int age, string relationship)
+        private Adress DataAdress;
+
+        public DataContacts(string name, string numberPhone, bool favorited, bool hasNumber, int age, string relationship, string lastName, string gender, Adress adress, string comemmtary)
         {
             DataName = name;
             DataNumberPhone = numberPhone;
@@ -29,6 +34,10 @@ namespace NotesApp_v0._1.Models
             DataHasNumber = hasNumber;
             DataAge = age;
             DataRelationship = relationship;
+            DataLastName = lastName;
+            DataGender = gender;
+            DataAdress = adress;
+            DataCommentary = comemmtary;
         }
 
         //Este método e responsavel de adicionar as funcionalidades de getting e setter, e tornar publico o acesso destas propriedades
@@ -46,6 +55,18 @@ namespace NotesApp_v0._1.Models
                     DataName = value;//DataName recebe o valor do código externo para alteração
                     NotifyPropertyChanged(nameof(Name));//Chama o método NotifyPropertyChanged e passa o Nome da propriedade alterada
 
+                }
+            }
+        }
+
+        public string LastName
+        {
+            get { return DataLastName; }
+            set
+            {
+                if (DataLastName != value)
+                {
+                    DataLastName = value;
                 }
             }
         }
@@ -106,6 +127,42 @@ namespace NotesApp_v0._1.Models
                 if (DataRelationship != value)
                 {
                     DataRelationship = value;
+                }
+            }
+        }
+
+        public string Gender
+        {
+            get { return DataGender; }
+            set
+            {
+                if (DataGender != value)
+                {
+                    DataGender = value;
+                }
+            }
+        }
+
+        public Adress Adress
+        {
+            get { return DataAdress; }
+            set
+            {
+                if (DataAdress != value)
+                {
+                    DataAdress = value;
+                }
+            }
+        }
+
+        public string Commentary
+        {
+            get { return DataCommentary; }
+            set
+            {
+                if (DataCommentary != value)
+                {
+                    DataCommentary = value;
                 }
             }
         }

@@ -23,74 +23,83 @@ namespace NotesApp_v0._1.frmMenus
             frmPrincipal = principal;
         }
 
-        //E realizado a checagem dos campos para adicionar um novo contato
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+
+        //Demais atribuições
         private void btnAdd_Confirm_Click(object sender, EventArgs e)
         {
-            try
+            string name = txtAdd_Name.Text;
+            string lastName = txtAdd_Lastname.Text;
+            string phoneNumber = txtAdd_Number.Text;
+            string relationship = comboBox_Relationship.Text;
+            bool favorited = checkBox_Favorite.Checked;
+            bool hasNumber;
+            int age;
+            string gender = comboBox_Gender.Text;
+            string commentary = txtLargeAdd_Commentary.Text;
+
+            //Parte relacionada ao endereço
+            string country = txtAdd_Country.Text;
+            string street = txtAdd_Street.Text;
+            string city = txtAdd_City.Text;
+            string state = txtAdd_State.Text;
+            string zipCode = txtAdd_ZipCode.Text;
+
+            /*-------------------------------------------------------------------------------------------------------------------------------*/
+
+
+            /*Retira os espaços de inputAge*/
+            if (int.TryParse(input_Age.Text.Replace(" ", ""), out age))
             {
-                string name = txtAdd_Name.Text;
-                string phoneNumber = txtAdd_Number.Text;
-                string relationship = comboBox_Relationship.Text;
-                bool favorited = checkBox_Favorite.Checked;
-                bool hasNumber;
-                int age;
 
-                if (int.TryParse(input_Age.Text.Replace(" ", ""), out age))
-                {
+            }
+            else
+            {
+                MessageBox.Show("Invalid age!", "Confirmation:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-                }
-                else
-                {
-                    MessageBox.Show("Invalid age!","Confirmation:",  MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            /*Verifica se o contato irá possuir número de telefone*/
+            if (string.IsNullOrEmpty(txtAdd_Number.Text))
+            {
+                hasNumber = false; //Não possui
+            }
+            else
+            {
+                hasNumber = true; //Possui
+            }
 
-                //Verifica se o contato irá possuir número de telefone
-                if (string.IsNullOrEmpty(txtAdd_Number.Text))
-                {
-                    hasNumber = false; //Não possui
-                    MessageBox.Show("Não Possui");
-                }
-                else
-                {
-                    hasNumber = true; //Possui
-                    MessageBox.Show("Possui");
-                }
+            /*-------------------------------------------------------------------------------------------------------------------------------*/
 
-                //Verifica se o campo para o name esta vazio, e realiza as validações dos campos name e phoneNumber
-                if (!string.IsNullOrEmpty(txtAdd_Name.Text))
+
+
+            //Verifica se o campo para o name esta vazio, e depois realiza as validações dos campos 
+            if (!string.IsNullOrEmpty(txtAdd_Name.Text))
+            {
+                try
                 {
-                    if (FormValidation.CheckNameField(name))
-                    {
-                        if (FormValidation.CheckNumberField(phoneNumber))
+                    Adress adress = new Adress(street, city, state, zipCode, country);
+
+                    DataContacts contactsInfo = new DataContacts(name, phoneNumber, favorited, hasNumber, age, relationship, lastName, gender, adress, commentary);
+
+                        if (ProcessCheck.CheckFormValidation(contactsInfo))
                         {
-                            if (FormValidation.CheckAgeField(age))
-                            {
-                                DataContacts newContact = new DataContacts(name, phoneNumber, favorited, hasNumber, age, relationship);
-                                ConfirmConcluided(newContact);
-                                MessageBox.Show("The contact is registered!");
-                            }
+                            ConfirmConcluided(contactsInfo);
+                            MessageBox.Show("The contact is registered!");
                         }
-                        else
-                        {
-                            MessageBox.Show("the phone number need a 8 digits, and cannot contain letters!");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("The name field cannot contain numbers or greater than 30 characters!");
-                    }
-
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Try again, field name cannot be empty!");
+                    MessageBox.Show("Houve um erro no sistema, ao processar os dados", "Erro:" + ex, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Houve um erro no sistema, ao processar os dados", "Erro:" + ex, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Try again, field name cannot be empty!");
             }
         }
+
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+
 
 
         //Após passar em todos os "checks", e chamado o método AddContact
@@ -100,7 +109,5 @@ namespace NotesApp_v0._1.frmMenus
             frmPrincipal.AddContact(newContact);
             DialogResult = DialogResult.OK;
         }
-
-
     }
 }

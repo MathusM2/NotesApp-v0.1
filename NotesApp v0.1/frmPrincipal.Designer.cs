@@ -163,7 +163,7 @@
             // panelFilter_CloseButton
             // 
             panelFilter_CloseButton.Image = (Image)resources.GetObject("panelFilter_CloseButton.Image");
-            panelFilter_CloseButton.Location = new Point(174, 0);
+            panelFilter_CloseButton.Location = new Point(176, 0);
             panelFilter_CloseButton.Name = "panelFilter_CloseButton";
             panelFilter_CloseButton.Size = new Size(26, 41);
             panelFilter_CloseButton.SizeMode = PictureBoxSizeMode.Zoom;

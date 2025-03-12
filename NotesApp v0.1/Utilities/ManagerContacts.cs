@@ -45,12 +45,16 @@ namespace NotesApp_v0._1.Utilities
                 {
                     throw new InvalidOperationException("O contato já existe");
                 }
-                dataContactsSelected.Name = editedContact.Name;
-                dataContactsSelected.NumberPhone = editedContact.NumberPhone;
-                dataContactsSelected.Favorited = editedContact.Favorited;
-                dataContactsSelected.HasNumber = editedContact.HasNumber;
-                dataContactsSelected.Age = editedContact.Age;
-                dataContactsSelected.Relationship = editedContact.Relationship;
+
+                int index = contacts.IndexOf(dataContactsSelected); //Procura o indice correspondente ao item selecionado na lista
+                if (index != -1) //Caso o IndexOf não encontre um item, ele retorna -1
+                {
+                    contacts[index] = editedContact;
+                }
+                else
+                {
+                    throw new InvalidOperationException("O contato não foi encontrado");
+                }
                 
 
 

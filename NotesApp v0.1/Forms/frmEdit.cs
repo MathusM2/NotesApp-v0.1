@@ -23,8 +23,11 @@ namespace NotesApp_v0._1.frmMenus
             frmPrincipal = principal;
             dataContactsSelected = dataContacts;
 
+            /*-------------------------------------------------------------------------------------------------------------------------------*/
+
+
             //Envia dos dados a serem preenchidos nos labels e campos de texto
-            labelDataName.Text = dataContactsSelected.Name;
+            labelDataName.Text = dataContactsSelected.Name + " " + dataContactsSelected.LastName;
 
             //Verifica se o usuário definou o contato como sem NumberPhone
             if (dataContactsSelected.NumberPhone == "")
@@ -41,17 +44,25 @@ namespace NotesApp_v0._1.frmMenus
             {
                 labelDataAge.Text = Convert.ToString(dataContactsSelected.Age);
             }
-            else if(dataContactsSelected.Age == 0)
+            else if (dataContactsSelected.Age == 0)
             {
                 labelDataAge.Text = "Without";
             }
             labelDataRelationship.Text = dataContactsSelected.Relationship;
-            
+            labelDataGender.Text = dataContactsSelected.Gender;
+            labelDataStreet.Text = dataContactsSelected.Adress.DataStreet;
+            labelDataCity.Text = dataContactsSelected.Adress.DataCity;
+            labelDataState.Text = dataContactsSelected.Adress.DataState;
+            labelDataZipCode.Text = dataContactsSelected.Adress.DataZipCode;
+            labelDataCountry.Text = dataContactsSelected.Adress.DataCountry;
 
             /*-------------------------------------------------------------------------------------------------------------------------------*/
 
+
+
             //Adiciona aos campos de edição os valores para edição, facilitando a edição ao usuário
             txtNameEdit.Text = dataContactsSelected.Name;
+            txtLastnameEdit.Text = dataContactsSelected.LastName;
             txtPhoneEdit.Text = dataContactsSelected.NumberPhone;
             if (dataContactsSelected.Age > 0)
             {
@@ -63,6 +74,15 @@ namespace NotesApp_v0._1.frmMenus
             }
             checkBox_FavoriteEdited.Checked = dataContactsSelected.Favorited;
             comboBoxRelationshipEdit.Text = dataContactsSelected.Relationship;
+            comboBoxGenderEdit.Text = dataContactsSelected.Gender;
+            txtStreetEdit.Text = dataContactsSelected.Adress.DataStreet;
+            txtCityEdit.Text = dataContactsSelected.Adress.DataCity;
+            txtStateEdit.Text = dataContactsSelected.Adress.DataState;
+            txtZipCodeEdit.Text = dataContactsSelected.Adress.DataZipCode;
+            txtCountryEdit.Text = dataContactsSelected.Adress.DataCountry;
+            txtLargeCommentaryEdit.Text = dataContactsSelected.Commentary;
+
+
 
 
             this.Shown += new EventHandler(Form1_Shown);//Tira o foco dos campos de edição
@@ -71,67 +91,75 @@ namespace NotesApp_v0._1.frmMenus
         //Realiza as checagens para edição
         private void button_Confirm_Click(object sender, EventArgs e)
         {
+
+            //Demais Atribuições
+
             string Name = txtNameEdit.Text;
+            string LastName = txtLastnameEdit.Text;
             string NumberPhone = txtPhoneEdit.Text;
             string Relationship = comboBoxRelationshipEdit.Text;
             bool favorited = checkBox_FavoriteEdited.Checked;
             bool hasNumber;
             int age;
+            string Gender = comboBoxGenderEdit.Text;
+            string Commentary = txtLargeCommentaryEdit.Text;
 
+            string Street = txtStreetEdit.Text;
+            string City = txtCityEdit.Text;
+            string Country = txtCountryEdit.Text;
+            string State = txtStateEdit.Text;
+            string ZipCode = txtZipCodeEdit.Text;
+
+            //---------------------------------------------------------------------------------------------------------------------
+
+
+
+            /*Retira os espaços no inputAge*/
             if (int.TryParse(inputAgeEdit.Text.Replace(" ", ""), out age))
             {
 
             }
-            else 
+            else
             {
                 MessageBox.Show("Invalid age!", "Confirmation:", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            MessageBox.Show(Convert.ToString(age));
-
-            //Verifica se o contato irá possuir número de telefone
+            /*Verifica se o contato irá possuir número de telefone*/
             if (string.IsNullOrEmpty(NumberPhone))
             {
                 hasNumber = false; //Não possui
-                MessageBox.Show("Não Possui");
             }
             else
             {
                 hasNumber = true; //Possui
-                MessageBox.Show("Possui");
             }
 
+            //----------------------------------------------------------------------------------------------------------------------
+
+
+
+            /*Responsável por verificar primeiramente, se o campo "Name" está preenchido*/
             if (!string.IsNullOrEmpty(txtNameEdit.Text))
             {
-                try
+                try //Irá ser realizado a repassagem de dados, antes por meio de uma checagem, há qualquer erro, o código retornará este ao user
                 {
-                    if (FormValidation.CheckNameField(Name))
-                    {
-                        if (FormValidation.CheckNumberField(NumberPhone))
-                        {
-                            if (FormValidation.CheckAgeField(age))
-                            {
-                                DataContacts editedContact = new DataContacts(Name, NumberPhone, favorited, hasNumber, age, Relationship);
+                    Adress adress = new Adress(Street, City, State, ZipCode, Country);
 
-                                ConfirmConcluided(editedContact, dataContactsSelected);
+                    DataContacts editedContact = new DataContacts(Name, NumberPhone, favorited, hasNumber, age, Relationship, LastName, Gender, adress, Commentary);
 
-                                DialogResult = DialogResult.OK;
-                                MessageBox.Show("Contact edited successfully!");
-                            }
-                        }
-                        else
+                        if (ProcessCheck.CheckFormValidation(editedContact))
                         {
-                            MessageBox.Show("the phone number need a 8 digits, and cannot contain letters!");
+                        
+
+                            ConfirmConcluided(editedContact, dataContactsSelected);
+
+                            DialogResult = DialogResult.OK;
+                            MessageBox.Show("Contact edited successfully!");
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("The name field cannot contain numbers or greater than 30 characters!");
-                    }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Houve um erro no sistema, ao processar os dados","Erro:" + ex, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Houve um erro no sistema, ao processar os dados", "Erro:" + ex, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -139,6 +167,11 @@ namespace NotesApp_v0._1.frmMenus
                 MessageBox.Show("Try again or fill in the field name");
             }
         }
+
+        //---------------------------------------------------------------------------------------------------------------------
+
+
+
 
         //Ao concluir as checagens, realizada a chamado do delegado EditContact, e repassa os dados
         public void ConfirmConcluided(DataContacts editedContact, DataContacts dataContactsSelected)
@@ -159,8 +192,6 @@ namespace NotesApp_v0._1.frmMenus
             // Remover o foco do TextBox
             this.button_Confirm.Focus();
         }
-
-
     }
 }
        
