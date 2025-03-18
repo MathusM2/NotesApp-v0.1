@@ -37,21 +37,9 @@
             txt_Search = new TextBox();
             icon_Search = new PictureBox();
             icon_filter = new PictureBox();
-            panelFilter = new Panel();
-            panelFilterInput_Age = new MaskedTextBox();
-            panelFilter_CloseButton = new PictureBox();
-            panelFilter_comboBoxRelations = new ComboBox();
-            panelFilter_labelAge = new Label();
-            panelFilter_labelRelationship = new Label();
-            checkBox_FilterHaveNumber = new CheckBox();
-            checkBox_FilterFavorite = new CheckBox();
-            panelFilter_labelTitle = new Label();
-            buttonConfirm_Filter = new Button();
             resetListButton = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)icon_Search).BeginInit();
             ((System.ComponentModel.ISupportInitialize)icon_filter).BeginInit();
-            panelFilter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)panelFilter_CloseButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)resetListButton).BeginInit();
             SuspendLayout();
             // 
@@ -134,111 +122,6 @@
             icon_filter.TabStop = false;
             icon_filter.Click += icon_filter_Click;
             // 
-            // panelFilter
-            // 
-            panelFilter.BackColor = SystemColors.Window;
-            panelFilter.Controls.Add(panelFilterInput_Age);
-            panelFilter.Controls.Add(panelFilter_CloseButton);
-            panelFilter.Controls.Add(panelFilter_comboBoxRelations);
-            panelFilter.Controls.Add(panelFilter_labelAge);
-            panelFilter.Controls.Add(panelFilter_labelRelationship);
-            panelFilter.Controls.Add(checkBox_FilterHaveNumber);
-            panelFilter.Controls.Add(checkBox_FilterFavorite);
-            panelFilter.Controls.Add(panelFilter_labelTitle);
-            panelFilter.Controls.Add(buttonConfirm_Filter);
-            panelFilter.Location = new Point(12, 65);
-            panelFilter.Name = "panelFilter";
-            panelFilter.Size = new Size(202, 402);
-            panelFilter.TabIndex = 10;
-            // 
-            // panelFilterInput_Age
-            // 
-            panelFilterInput_Age.Location = new Point(10, 118);
-            panelFilterInput_Age.Mask = "000";
-            panelFilterInput_Age.Name = "panelFilterInput_Age";
-            panelFilterInput_Age.Size = new Size(30, 27);
-            panelFilterInput_Age.TabIndex = 18;
-            panelFilterInput_Age.ValidatingType = typeof(int);
-            // 
-            // panelFilter_CloseButton
-            // 
-            panelFilter_CloseButton.Image = (Image)resources.GetObject("panelFilter_CloseButton.Image");
-            panelFilter_CloseButton.Location = new Point(176, 0);
-            panelFilter_CloseButton.Name = "panelFilter_CloseButton";
-            panelFilter_CloseButton.Size = new Size(26, 41);
-            panelFilter_CloseButton.SizeMode = PictureBoxSizeMode.Zoom;
-            panelFilter_CloseButton.TabIndex = 17;
-            panelFilter_CloseButton.TabStop = false;
-            panelFilter_CloseButton.Click += panelFilter_CloseButton_Click;
-            // 
-            // panelFilter_comboBoxRelations
-            // 
-            panelFilter_comboBoxRelations.FormattingEnabled = true;
-            panelFilter_comboBoxRelations.Items.AddRange(new object[] { "", "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
-            panelFilter_comboBoxRelations.Location = new Point(10, 64);
-            panelFilter_comboBoxRelations.Name = "panelFilter_comboBoxRelations";
-            panelFilter_comboBoxRelations.Size = new Size(151, 28);
-            panelFilter_comboBoxRelations.TabIndex = 16;
-            // 
-            // panelFilter_labelAge
-            // 
-            panelFilter_labelAge.AutoSize = true;
-            panelFilter_labelAge.Location = new Point(10, 95);
-            panelFilter_labelAge.Name = "panelFilter_labelAge";
-            panelFilter_labelAge.Size = new Size(36, 20);
-            panelFilter_labelAge.TabIndex = 13;
-            panelFilter_labelAge.Text = "Age";
-            // 
-            // panelFilter_labelRelationship
-            // 
-            panelFilter_labelRelationship.AutoSize = true;
-            panelFilter_labelRelationship.Location = new Point(10, 42);
-            panelFilter_labelRelationship.Name = "panelFilter_labelRelationship";
-            panelFilter_labelRelationship.Size = new Size(91, 20);
-            panelFilter_labelRelationship.TabIndex = 12;
-            panelFilter_labelRelationship.Text = "Relationship";
-            // 
-            // checkBox_FilterHaveNumber
-            // 
-            checkBox_FilterHaveNumber.AutoSize = true;
-            checkBox_FilterHaveNumber.Location = new Point(10, 199);
-            checkBox_FilterHaveNumber.Name = "checkBox_FilterHaveNumber";
-            checkBox_FilterHaveNumber.Size = new Size(178, 24);
-            checkBox_FilterHaveNumber.TabIndex = 11;
-            checkBox_FilterHaveNumber.Text = "Have a number phone";
-            checkBox_FilterHaveNumber.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_FilterFavorite
-            // 
-            checkBox_FilterFavorite.AutoSize = true;
-            checkBox_FilterFavorite.Location = new Point(10, 169);
-            checkBox_FilterFavorite.Name = "checkBox_FilterFavorite";
-            checkBox_FilterFavorite.Size = new Size(89, 24);
-            checkBox_FilterFavorite.TabIndex = 3;
-            checkBox_FilterFavorite.Text = "Favorites";
-            checkBox_FilterFavorite.UseVisualStyleBackColor = true;
-            // 
-            // panelFilter_labelTitle
-            // 
-            panelFilter_labelTitle.AutoSize = true;
-            panelFilter_labelTitle.Font = new Font("Segoe UI", 18F);
-            panelFilter_labelTitle.Location = new Point(48, 0);
-            panelFilter_labelTitle.Name = "panelFilter_labelTitle";
-            panelFilter_labelTitle.Size = new Size(83, 41);
-            panelFilter_labelTitle.TabIndex = 1;
-            panelFilter_labelTitle.Text = "Filter";
-            // 
-            // buttonConfirm_Filter
-            // 
-            buttonConfirm_Filter.Location = new Point(48, 356);
-            buttonConfirm_Filter.Name = "buttonConfirm_Filter";
-            buttonConfirm_Filter.Size = new Size(94, 29);
-            buttonConfirm_Filter.TabIndex = 0;
-            buttonConfirm_Filter.Text = "Confirm";
-            buttonConfirm_Filter.TextImageRelation = TextImageRelation.ImageAboveText;
-            buttonConfirm_Filter.UseVisualStyleBackColor = true;
-            buttonConfirm_Filter.Click += buttonConfirm_Filter_Click;
-            // 
             // resetListButton
             // 
             resetListButton.Image = (Image)resources.GetObject("resetListButton.Image");
@@ -254,8 +137,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(360, 479);
-            Controls.Add(panelFilter);
+            ClientSize = new Size(360, 465);
             Controls.Add(icon_filter);
             Controls.Add(icon_Search);
             Controls.Add(txt_Search);
@@ -269,9 +151,6 @@
             Text = "SimpCon";
             ((System.ComponentModel.ISupportInitialize)icon_Search).EndInit();
             ((System.ComponentModel.ISupportInitialize)icon_filter).EndInit();
-            panelFilter.ResumeLayout(false);
-            panelFilter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)panelFilter_CloseButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)resetListButton).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -287,16 +166,6 @@
         private TextBox txt_Search;
         private PictureBox icon_Search;
         private PictureBox icon_filter;
-        public Panel panelFilter;
-        protected Button buttonConfirm_Filter;
-        protected Label panelFilter_labelTitle;
-        protected CheckBox checkBox_FilterHaveNumber;
-        protected CheckBox checkBox_FilterFavorite;
-        protected Label panelFilter_labelAge;
-        protected Label panelFilter_labelRelationship;
-        protected ComboBox panelFilter_comboBoxRelations;
-        protected PictureBox panelFilter_CloseButton;
-        private MaskedTextBox panelFilterInput_Age;
         private PictureBox resetListButton;
     }
 }

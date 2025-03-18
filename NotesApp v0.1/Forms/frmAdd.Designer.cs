@@ -73,9 +73,9 @@
             // 
             // btnAdd_Confirm
             // 
-            btnAdd_Confirm.Location = new Point(12, 400);
+            btnAdd_Confirm.Location = new Point(12, 431);
             btnAdd_Confirm.Name = "btnAdd_Confirm";
-            btnAdd_Confirm.Size = new Size(193, 29);
+            btnAdd_Confirm.Size = new Size(157, 29);
             btnAdd_Confirm.TabIndex = 2;
             btnAdd_Confirm.Text = "Confirm";
             btnAdd_Confirm.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             // checkBox_Favorite
             // 
             checkBox_Favorite.AutoSize = true;
-            checkBox_Favorite.Location = new Point(175, 349);
+            checkBox_Favorite.Location = new Point(211, 107);
             checkBox_Favorite.Name = "checkBox_Favorite";
             checkBox_Favorite.Size = new Size(87, 24);
             checkBox_Favorite.TabIndex = 5;
@@ -120,9 +120,10 @@
             // 
             // comboBox_Relationship
             // 
+            comboBox_Relationship.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Relationship.FormattingEnabled = true;
-            comboBox_Relationship.Items.AddRange(new object[] { "", "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
-            comboBox_Relationship.Location = new Point(54, 155);
+            comboBox_Relationship.Items.AddRange(new object[] { "-Not selected-", "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
+            comboBox_Relationship.Location = new Point(211, 155);
             comboBox_Relationship.Name = "comboBox_Relationship";
             comboBox_Relationship.Size = new Size(151, 28);
             comboBox_Relationship.TabIndex = 8;
@@ -130,7 +131,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(54, 134);
+            label4.Location = new Point(211, 134);
             label4.Name = "label4";
             label4.Size = new Size(91, 20);
             label4.TabIndex = 9;
@@ -150,7 +151,7 @@
             txtAdd_Lastname.Location = new Point(211, 50);
             txtAdd_Lastname.MaxLength = 50;
             txtAdd_Lastname.Name = "txtAdd_Lastname";
-            txtAdd_Lastname.Size = new Size(143, 27);
+            txtAdd_Lastname.Size = new Size(151, 27);
             txtAdd_Lastname.TabIndex = 11;
             // 
             // label5
@@ -164,16 +165,16 @@
             // 
             // txtAdd_Country
             // 
-            txtAdd_Country.Location = new Point(211, 155);
+            txtAdd_Country.Location = new Point(175, 237);
             txtAdd_Country.MaxLength = 50;
             txtAdd_Country.Name = "txtAdd_Country";
-            txtAdd_Country.Size = new Size(143, 27);
+            txtAdd_Country.Size = new Size(80, 27);
             txtAdd_Country.TabIndex = 13;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(211, 134);
+            label6.Location = new Point(175, 214);
             label6.Name = "label6";
             label6.Size = new Size(60, 20);
             label6.TabIndex = 14;
@@ -182,7 +183,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(175, 240);
+            label7.Location = new Point(175, 320);
             label7.Name = "label7";
             label7.Size = new Size(48, 20);
             label7.TabIndex = 15;
@@ -190,7 +191,7 @@
             // 
             // txtAdd_State
             // 
-            txtAdd_State.Location = new Point(175, 210);
+            txtAdd_State.Location = new Point(175, 290);
             txtAdd_State.MaxLength = 2;
             txtAdd_State.Name = "txtAdd_State";
             txtAdd_State.Size = new Size(30, 27);
@@ -198,16 +199,16 @@
             // 
             // txtAdd_Street
             // 
-            txtAdd_Street.Location = new Point(175, 263);
+            txtAdd_Street.Location = new Point(175, 343);
             txtAdd_Street.MaxLength = 50;
             txtAdd_Street.Name = "txtAdd_Street";
-            txtAdd_Street.Size = new Size(179, 27);
+            txtAdd_Street.Size = new Size(187, 27);
             txtAdd_Street.TabIndex = 17;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(162, 187);
+            label8.Location = new Point(172, 267);
             label8.Name = "label8";
             label8.Size = new Size(43, 20);
             label8.TabIndex = 18;
@@ -233,17 +234,18 @@
             // 
             // comboBox_Gender
             // 
+            comboBox_Gender.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Gender.FormattingEnabled = true;
-            comboBox_Gender.Items.AddRange(new object[] { "", "Male", "Female", "Other", "Prefer not to say" });
-            comboBox_Gender.Location = new Point(211, 103);
+            comboBox_Gender.Items.AddRange(new object[] { "-Not selected-", "Male", "Female", "Other" });
+            comboBox_Gender.Location = new Point(54, 154);
             comboBox_Gender.Name = "comboBox_Gender";
-            comboBox_Gender.Size = new Size(143, 28);
+            comboBox_Gender.Size = new Size(151, 28);
             comboBox_Gender.TabIndex = 22;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(211, 80);
+            label10.Location = new Point(54, 133);
             label10.Name = "label10";
             label10.Size = new Size(57, 20);
             label10.TabIndex = 23;
@@ -252,7 +254,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(211, 187);
+            label11.Location = new Point(221, 267);
             label11.Name = "label11";
             label11.Size = new Size(34, 20);
             label11.TabIndex = 24;
@@ -260,16 +262,16 @@
             // 
             // txtAdd_City
             // 
-            txtAdd_City.Location = new Point(211, 210);
+            txtAdd_City.Location = new Point(211, 290);
             txtAdd_City.MaxLength = 100;
             txtAdd_City.Name = "txtAdd_City";
-            txtAdd_City.Size = new Size(143, 27);
+            txtAdd_City.Size = new Size(151, 27);
             txtAdd_City.TabIndex = 25;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(175, 293);
+            label12.Location = new Point(261, 213);
             label12.Name = "label12";
             label12.Size = new Size(66, 20);
             label12.TabIndex = 26;
@@ -277,16 +279,16 @@
             // 
             // txtAdd_ZipCode
             // 
-            txtAdd_ZipCode.Location = new Point(175, 316);
+            txtAdd_ZipCode.Location = new Point(261, 237);
             txtAdd_ZipCode.Name = "txtAdd_ZipCode";
-            txtAdd_ZipCode.Size = new Size(121, 27);
+            txtAdd_ZipCode.Size = new Size(101, 27);
             txtAdd_ZipCode.TabIndex = 27;
             // 
             // frmAdd
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(374, 441);
+            ClientSize = new Size(378, 472);
             Controls.Add(txtAdd_ZipCode);
             Controls.Add(label12);
             Controls.Add(txtAdd_City);

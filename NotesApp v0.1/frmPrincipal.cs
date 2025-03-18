@@ -3,6 +3,8 @@ using System.ComponentModel;
 using NotesApp_v0._1.Models;
 using NotesApp_v0._1.Utilities;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using NotesApp_v0._1.Forms.Dialogs;
+using NotesApp_v0._1.Utilities.Managers;
 
 namespace NotesApp_v0._1
 {
@@ -26,17 +28,13 @@ namespace NotesApp_v0._1
             listNames.DataSource = bindingSource;//E repassa essas informações para a listbox
             listNames.DisplayMember = "Name";
             listNames.ValueMember = "NumberPhone";
-
-            panelFilter.Visible = false;
         }
-
-
         /*------------------------------------------------------------------------------------------------------------------------------------*/
 
 
         //Delegators
 
-        //Recebe os dados de contact frmAdd e frmEdit, e chama a classe utilitária ManagerContacts
+        //Recebe os dados de contact frmAdd, frmEdit, e chama a classe utilitária ManagerContacts
         public void AddContact(DataContacts newContact)
         {
             try
@@ -59,6 +57,12 @@ namespace NotesApp_v0._1
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        //Recebe de FilterForm, uma lista de dados filtrada e envia esta para ManagerListContacts
+        public void FilterList(List<DataContacts> filtredOptions)
+        {
+            ManagerListContacts.ToFilter(bindingSource, filtredOptions);
         }
 
 
@@ -109,54 +113,12 @@ namespace NotesApp_v0._1
         //Filter
 
         //Responsável por abrir e esconder a aba de filtragem, da verificação dos campos e do button confirm para envio de dados
-
         private void icon_filter_Click(object sender, EventArgs e)
         {
-            panelFilter.Visible = true;
+            var filterWindow = new FilterForm(this, contacts);
+            filterWindow.ShowDialog();
         }
 
-        private void panelFilter_CloseButton_Click(object sender, EventArgs e)
-        {
-            panelFilter.Visible = false;
-        }
-
-        private void buttonConfirm_Filter_Click(object sender, EventArgs e)
-        {
-            int AgeField;
-            var RelationshipField = panelFilter_comboBoxRelations.Text;
-            bool FavoriteOption = checkBox_FilterFavorite.Checked;
-            bool HaveNumberOption = checkBox_FilterHaveNumber.Checked;
-            if (int.TryParse(panelFilterInput_Age.Text, out AgeField))
-            {
-
-            }
-            else if (AgeField == 0)
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("A idade não é valida!");
-            }
-
-
-            ConfirmOptionsToFilter(HaveNumberOption, FavoriteOption, AgeField);
-        }
-
-        public void ConfirmOptionsToFilter(bool haveNumberOption, bool favoriteOption, int ageField)
-        {
-            if (haveNumberOption == true || favoriteOption == true || ageField > 0)
-            {
-                var filtredItens = ListFilter.Filter(contacts, haveNumberOption, favoriteOption, ageField); //Chama o método de filtragem e recebe uma lista IEnumerable
-
-                bindingSource.DataSource = filtredItens; //Muda a referência de bindingSource para filtredItens
-                panelFilter.Visible = false;
-            }
-            else
-            {
-                bindingSource.DataSource = contacts; //Caso nada seja filtrado, a lista e restaurada
-            }
-        }
 
 
         /*------------------------------------------------------------------------------------------------------------------------------------*/
@@ -190,5 +152,7 @@ namespace NotesApp_v0._1
         {
             bindingSource.DataSource = contacts;
         }
+
+        
     }
 }

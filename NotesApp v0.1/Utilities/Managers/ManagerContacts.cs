@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NotesApp_v0._1.Models;
 
-namespace NotesApp_v0._1.Utilities
+namespace NotesApp_v0._1.Utilities.Managers
 {
     //Método utilitário para controle de dados da lista Contacts
     public class ManagerContacts
@@ -31,12 +31,12 @@ namespace NotesApp_v0._1.Utilities
                 throw new ApplicationException("Ocorrou um erro inesperado:" + ex);
             }
         }
-        
+
         public static void Edit(BindingList<DataContacts> contacts, DataContacts editedContact, DataContacts dataContactsSelected)
         {
             try
             {
-                if(editedContact == null)
+                if (editedContact == null)
                 {
                     throw new ArgumentNullException("O contato não pode ser nulo ou vazio");
                 }
@@ -55,11 +55,11 @@ namespace NotesApp_v0._1.Utilities
                 {
                     throw new InvalidOperationException("O contato não foi encontrado");
                 }
-                
+
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new ApplicationException("Ocorrou um erro inesperado:" + ex);
             }
@@ -72,11 +72,11 @@ namespace NotesApp_v0._1.Utilities
                 contacts.Remove(dataContactsSelected);
                 MessageBox.Show("User has been removed!");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Houve um erro no sistema, ao deletar o contato", "Erro:" + ex, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
 
         }
     }

@@ -81,11 +81,11 @@ namespace NotesApp_v0._1.frmMenus
 
                     DataContacts contactsInfo = new DataContacts(name, phoneNumber, favorited, hasNumber, age, relationship, lastName, gender, adress, commentary);
 
-                        if (ProcessCheck.CheckFormValidation(contactsInfo))
-                        {
-                            ConfirmConcluided(contactsInfo);
-                            MessageBox.Show("The contact is registered!");
-                        }
+                    if (ProcessCheck.CheckFormValidation(contactsInfo))
+                    {
+                        ConfirmConcluided(contactsInfo);
+                        MessageBox.Show("The contact is registered!");
+                    }
                 }
                 catch (Exception ex)
                 {

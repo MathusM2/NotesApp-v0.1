@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NotesApp_v0._1.Models;
 
-namespace NotesApp_v0._1.Utilities
+namespace NotesApp_v0._1.Utilities.Filters
 {
 
     public static class FormValidation
@@ -62,12 +62,12 @@ namespace NotesApp_v0._1.Utilities
 
             return (true, "");
 
-        //----------------------------------------------------------------------------------------------------------------------------------------------
+            //----------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 
-        /*Parte do código responsável pelos dados pessoas*/
+            /*Parte do código responsável pelos dados pessoas*/
         }
         public static bool CheckNameField(string name, out string errorMessage)
         {
@@ -82,7 +82,7 @@ namespace NotesApp_v0._1.Utilities
 
         public static bool CheckLastNameField(string lastname, out string errorMessage)
         {
-            if(ContainsNumbers(lastname) || lastname.Length > 50)
+            if (ContainsNumbers(lastname) || lastname.Length > 50)
             {
                 errorMessage = "The Lastname field cannot contain numbers or greater than 50 characters!";
                 return false;
@@ -97,7 +97,7 @@ namespace NotesApp_v0._1.Utilities
             {
                 errorMessage = "";
                 return true;
-                
+
             }
             else if (!ContainsOnlyNumbers(phoneNumber) || phoneNumber.Length != 8)
             {
@@ -110,8 +110,8 @@ namespace NotesApp_v0._1.Utilities
 
         public static bool CheckAgeField(int age, out string errorMessage)
         {
-            
-            if(age == 0)
+
+            if (age == 0)
             {
                 DialogResult result = MessageBox.Show("You want create a contact without an a age?", "Confirmation:", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
@@ -125,7 +125,7 @@ namespace NotesApp_v0._1.Utilities
                     return false;
                 }
             }
-            else if(age > 120)
+            else if (age > 120)
             {
                 errorMessage = "Enter a valid age";
                 return false;
@@ -143,7 +143,7 @@ namespace NotesApp_v0._1.Utilities
         /*Parte do código responsável pelos dados de endereço*/
         public static bool CheckCountryField(string country, out string errorMessage)
         {
-            if(ContainsNumbers(country))
+            if (ContainsNumbers(country))
             {
                 errorMessage = "The Country field cannot contains numbers";
                 return false;
@@ -157,7 +157,7 @@ namespace NotesApp_v0._1.Utilities
             if (ContainsNumbers(state))
             {
                 errorMessage = "The State field cannot contains numbers";
-                    return false;
+                return false;
             }
             errorMessage = "";
             return true;

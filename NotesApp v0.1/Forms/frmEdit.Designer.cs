@@ -133,9 +133,9 @@
             // 
             // button_Confirm
             // 
-            button_Confirm.Location = new Point(12, 409);
+            button_Confirm.Location = new Point(12, 433);
             button_Confirm.Name = "button_Confirm";
-            button_Confirm.Size = new Size(125, 29);
+            button_Confirm.Size = new Size(157, 29);
             button_Confirm.TabIndex = 6;
             button_Confirm.Text = "Confirm";
             button_Confirm.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             // checkBox_FavoriteEdited
             // 
             checkBox_FavoriteEdited.AutoSize = true;
-            checkBox_FavoriteEdited.Location = new Point(175, 371);
+            checkBox_FavoriteEdited.Location = new Point(214, 130);
             checkBox_FavoriteEdited.Name = "checkBox_FavoriteEdited";
             checkBox_FavoriteEdited.Size = new Size(83, 24);
             checkBox_FavoriteEdited.TabIndex = 7;
@@ -189,11 +189,12 @@
             // 
             // comboBoxRelationshipEdit
             // 
+            comboBoxRelationshipEdit.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRelationshipEdit.FormattingEnabled = true;
-            comboBoxRelationshipEdit.Items.AddRange(new object[] { "", "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
-            comboBoxRelationshipEdit.Location = new Point(57, 181);
+            comboBoxRelationshipEdit.Items.AddRange(new object[] { "-Not selected-", "Acquaintance", "Friend", "Fellow", "Familiar", "Stranger" });
+            comboBoxRelationshipEdit.Location = new Point(214, 181);
             comboBoxRelationshipEdit.Name = "comboBoxRelationshipEdit";
-            comboBoxRelationshipEdit.Size = new Size(151, 28);
+            comboBoxRelationshipEdit.Size = new Size(148, 28);
             comboBoxRelationshipEdit.TabIndex = 12;
             // 
             // inputAgeEdit
@@ -217,7 +218,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(57, 158);
+            label7.Location = new Point(206, 158);
             label7.Name = "label7";
             label7.Size = new Size(91, 20);
             label7.TabIndex = 15;
@@ -243,11 +244,12 @@
             // 
             // comboBoxGenderEdit
             // 
+            comboBoxGenderEdit.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxGenderEdit.FormattingEnabled = true;
-            comboBoxGenderEdit.Items.AddRange(new object[] { "", "Male", "Female", "Other", "Prefer not to say" });
-            comboBoxGenderEdit.Location = new Point(214, 128);
+            comboBoxGenderEdit.Items.AddRange(new object[] { "-Not selected-", "Male", "Female", "Other" });
+            comboBoxGenderEdit.Location = new Point(57, 181);
             comboBoxGenderEdit.Name = "comboBoxGenderEdit";
-            comboBoxGenderEdit.Size = new Size(143, 28);
+            comboBoxGenderEdit.Size = new Size(151, 28);
             comboBoxGenderEdit.TabIndex = 18;
             // 
             // txtLastnameEdit
@@ -255,13 +257,13 @@
             txtLastnameEdit.Location = new Point(214, 75);
             txtLastnameEdit.MaxLength = 50;
             txtLastnameEdit.Name = "txtLastnameEdit";
-            txtLastnameEdit.Size = new Size(143, 27);
+            txtLastnameEdit.Size = new Size(148, 27);
             txtLastnameEdit.TabIndex = 19;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(214, 105);
+            label9.Location = new Point(57, 158);
             label9.Name = "label9";
             label9.Size = new Size(57, 20);
             label9.TabIndex = 20;
@@ -278,23 +280,23 @@
             // 
             // txtCountryEdit
             // 
-            txtCountryEdit.Location = new Point(214, 182);
+            txtCountryEdit.Location = new Point(175, 262);
             txtCountryEdit.MaxLength = 50;
             txtCountryEdit.Name = "txtCountryEdit";
-            txtCountryEdit.Size = new Size(143, 27);
+            txtCountryEdit.Size = new Size(80, 27);
             txtCountryEdit.TabIndex = 22;
             // 
             // txtStreetEdit
             // 
-            txtStreetEdit.Location = new Point(175, 288);
+            txtStreetEdit.Location = new Point(175, 368);
             txtStreetEdit.MaxLength = 50;
             txtStreetEdit.Name = "txtStreetEdit";
-            txtStreetEdit.Size = new Size(182, 27);
+            txtStreetEdit.Size = new Size(187, 27);
             txtStreetEdit.TabIndex = 23;
             // 
             // txtStateEdit
             // 
-            txtStateEdit.Location = new Point(175, 235);
+            txtStateEdit.Location = new Point(175, 315);
             txtStateEdit.MaxLength = 2;
             txtStateEdit.Name = "txtStateEdit";
             txtStateEdit.Size = new Size(30, 27);
@@ -303,7 +305,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(175, 265);
+            label16.Location = new Point(175, 345);
             label16.Name = "label16";
             label16.Size = new Size(48, 20);
             label16.TabIndex = 25;
@@ -312,7 +314,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(214, 159);
+            label12.Location = new Point(175, 239);
             label12.Name = "label12";
             label12.Size = new Size(60, 20);
             label12.TabIndex = 26;
@@ -321,7 +323,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(165, 212);
+            label13.Location = new Point(175, 292);
             label13.Name = "label13";
             label13.Size = new Size(43, 20);
             label13.TabIndex = 27;
@@ -439,7 +441,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(214, 212);
+            label11.Location = new Point(224, 292);
             label11.Name = "label11";
             label11.Size = new Size(34, 20);
             label11.TabIndex = 40;
@@ -447,16 +449,16 @@
             // 
             // txtCityEdit
             // 
-            txtCityEdit.Location = new Point(214, 235);
+            txtCityEdit.Location = new Point(214, 315);
             txtCityEdit.MaxLength = 100;
             txtCityEdit.Name = "txtCityEdit";
-            txtCityEdit.Size = new Size(143, 27);
+            txtCityEdit.Size = new Size(148, 27);
             txtCityEdit.TabIndex = 41;
             // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(175, 318);
+            label19.Location = new Point(261, 239);
             label19.Name = "label19";
             label19.Size = new Size(66, 20);
             label19.TabIndex = 42;
@@ -464,9 +466,9 @@
             // 
             // txtZipCodeEdit
             // 
-            txtZipCodeEdit.Location = new Point(175, 341);
+            txtZipCodeEdit.Location = new Point(261, 262);
             txtZipCodeEdit.Name = "txtZipCodeEdit";
-            txtZipCodeEdit.Size = new Size(121, 27);
+            txtZipCodeEdit.Size = new Size(101, 27);
             txtZipCodeEdit.TabIndex = 43;
             // 
             // label21
@@ -519,7 +521,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(712, 447);
+            ClientSize = new Size(712, 474);
             Controls.Add(labelDataZipCode);
             Controls.Add(labelDataCity);
             Controls.Add(label22);
